@@ -51,30 +51,35 @@
 				<div id="navbarSupportedContent" class="collapse navbar-collapse pull-right">
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo home_url(); ?>#home">Home</a>
+							<a class="nav-link" href="https://i-investng.com#home">Home</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo home_url(); ?>#about">About</a>
+							<a class="nav-link" href="https://i-investng.com#about">About</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="<?php echo home_url(); ?>#faq">FAQs</a>
+							<a class="nav-link" href="https://i-investng.com#faq">FAQs</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="https://i-investng.com/tangerine-life">Get Tangerine Life</a>
 						</li>
 					</ul>
 					<a href="<?php echo home_url(); ?>#download" class="btn btn-primary nav-download">Download the App</a>
 					<a href="https://client.i-investng.com/" class="btn btn-primary" target="_blank" style="margin-left:10px;">Invest Now</a>
 				</div>
 			</nav>
-			<div class="banner-container" style="background-image: url('https://i-investng.com/wp-content/uploads/2020/08/tangerine-banner.png');">
+<!-- 			<div class="banner-container" style="background-image: url('https://i-investng.com/wp-content/uploads/2020/08/tangerine-banner.png');"> -->
+			<div class="banner-container" style="background-image: url('https://i-investng.com/wp-content/uploads/2020/08/Create-3@2x.png');">
 				<div class="banner-content">
 					<div class="banner-image show-mobile">
 						<img src="https://i-investng.com/wp-content/uploads/2020/08/tangerine-life-logo-white.png" alt="Tangerine Life Logo White" style="max-width: 230px; margin-top: -20px; margin-bottom: 30px;">
-						<img src="https://i-investng.com/wp-content/uploads/2020/08/tangerine-banner.png" alt="Tangerine Banner">
+						<img src="https://i-investng.com/wp-content/uploads/2020/08/Create-3@2x.png" alt="Tangerine Banner">
+<!-- 						<img src="https://i-investng.com/wp-content/uploads/2020/08/tangerine-banner.png" alt="Tangerine Banner"> -->
 					</div>
 					<div class="banner-text">
 						<img class="show-desktop" src="https://i-investng.com/wp-content/uploads/2020/08/tangerine-life-logo-white.png" alt="Tangerine Life Logo White">
 						<h5 class="banner-main">You can now get Tangerine life insurance on the i-invest App</h5>
 						<div class="download">
-							<a href="#">Start today</a>
+							<a href="https://client.i-investng.com/" target="_blank">Start today</a>
 						</div>
 					</div>
 				</div>
@@ -216,7 +221,7 @@
 					</div>
 					<div class="col-md-5">
 						<div class="download">
-							<a href="#">Sign Up, Start today</a>
+							<a href="https://client.i-investng.com/" target="_blank">Sign Up, Start today</a>
 						</div>
 					</div>
 				</div>
@@ -259,20 +264,20 @@
 	</div>
 	<?php wp_footer(); ?>
 	<script>
-		$("a.btn, .nav-link").on('click', function(event) {
+// 		$("a.btn, .nav-link").on('click', function(event) {
 
-		  if (this.hash !== "") {
-		    event.preventDefault();
-		    var hash = this.hash;
+// 		  if (this.hash !== "") {
+// 		    event.preventDefault();
+// 		    var hash = this.hash;
 
 
-		    $('html, body').animate({
-		      scrollTop: $(hash).offset().top
-		    }, 800, function(){
-		      window.location.hash = hash;
-		    });
-		  }
-		});
+// 		    $('html, body').animate({
+// 		      scrollTop: $(hash).offset().top
+// 		    }, 800, function(){
+// 		      window.location.hash = hash;
+// 		    });
+// 		  }
+// 		});
 
 		$(".btn.btn-link").on('click', function(e){
 			const $target = $(e.currentTarget)
