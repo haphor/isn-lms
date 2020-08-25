@@ -1,0 +1,17 @@
+{
+    "name": "stephen/isn-learning",
+    "description": "ISN Learning Plugin",
+    "type": "project",
+    "license": "GPL",
+    "authors": [
+        {
+            "name": "Opeyemi Ibrahim",
+            "email": "opeyemi.ibrahim@anakle.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "autoload": {
+        "psr-4": {"Inc\\": "./inc"}
+    }
+}
