@@ -1216,8 +1216,11 @@ span.um-active-color {
 	font-size: 17px;
 	font-weight: 500;
 	line-height: 25px;
+	color: #121212;
 }
-
+.learning-list-content h4 a{
+	color: inherit;
+}
 .learning-info {
 	font-weight: 300;
 	font-size: 12px;

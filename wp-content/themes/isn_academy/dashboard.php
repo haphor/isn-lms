@@ -113,7 +113,26 @@ get_header( 'dashboard' );
   <main class="l-main">
    <div class="content-wrapper content-wrapper--with-bg">
 
+<?php
+$args = [
+    'post_type' => 'course',
+    'post_status' => 'publish',
+    'orderby' => 'rand',
+    'posts_per_page' => 6,
+    'post_parent' => 0,
+];
+$loop = new WP_Query( $args );
+set_query_var( 'accordion', $loop );
+?>
     <!-- Last Section -->
+       <?php if( ! is_user_logged_in() ) :
+           set_query_var( 'courses', $loop );
+           get_template_part( 'templates/parts/general', 'view' );
+       ?>
+
+
+       <?php else :?>
+
     <section id="last-section" class="section-padding d-flex flex-column">
      <div class="section-header">
       <h3 class="section-heading">CONTINUE READING</h3>
@@ -418,7 +437,7 @@ get_header( 'dashboard' );
      </div>
 
     </section>
-
+       <?php endif; ?>
    </div>
   </main>
  </section>
