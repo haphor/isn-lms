@@ -112,11 +112,14 @@ $query = new WP_Query( $args );
                                     <?php
                                         $totalCourse = get_children( ['num_of_posts' => -1, 'post_parent' => get_the_ID() ], ARRAY_A );
                                         $total = count($totalCourse) + 1;
+                                        $meta = get_post_meta( get_the_ID(), 'youtube_fields', true);
                                     ?>
+                                    <?php if( $meta['certificate'] ) : ?>
                                     <div class="d-flex flex-column align-items-center">
                                         <img src="<?= bloginfo('template_url');?>/images/cert.svg" alt="Course Certificate Icon" />
                                         <span class="course-des">Course Certificate</span>
                                     </div>
+                                    <?php endif;?>
                                     <div class="d-flex flex-column align-items-center">
                                         <img src="<?= bloginfo('template_url');?>/images/login.svg" alt="Login Required Icon" />
                                         <span class="course-des">Login Required</span>
@@ -129,7 +132,7 @@ $query = new WP_Query( $args );
 
                                     <div class="d-flex flex-column align-items-center">
                                         <img src="<?= bloginfo('template_url');?>/images/time.svg" alt="5hrs 30mins Icon" />
-                                        <span class="course-des">5hrs 30mins</span>
+                                        <span class="course-des"><?= $meta['length']?></span>
                                     </div>
                                 </div>
                             </div>
