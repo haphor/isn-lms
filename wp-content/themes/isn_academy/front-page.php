@@ -13,6 +13,16 @@
  */
 
 get_header();
+
+$args = [
+  'post_type' => 'course',
+  'posts_per_page' => 3,
+  'post_parent' => 0,
+  'post_status' => 'publish',
+  'orderby' => 'rand'
+];
+$query = new WP_Query( $args );
+
 ?>
 
 	<main id="primary" class="site-main">
@@ -30,7 +40,10 @@ get_header();
 					<?php the_content(); ?>
 				</div>
 			</section>
-			
+            <?php wp_reset_postdata(); ?>
+        <?php
+        endwhile; // End of the loop.
+        ?>
 			<!-- Quick Learning Section -->
 			<section id="quick-learning" class="section-padding">
 				<div class="section-header d-md-flex flex-wrap justify-content-between align-items-center">
@@ -87,113 +100,52 @@ get_header();
 				</div>
 
 				<div class="section-body learning-list d-flex flex-wrap justify-content-between">
-					
-					<article class="learning-list-item d-flex flex-column pb-4">
-						<div class="learning-list-image">
-							<img src="<?= bloginfo('template_url');?>/images/popular-courses.jpg" alt="Course Featured Image" />
-						</div>
-						<div class="learning-list-content d-flex flex-column">
-							<h4>Lab 2.0 - The Golden Age of the Clinical Laboratory: Changing the Way Healthcare is Delivered</h4>
-							
-							<div class="course-info d-flex flex-nowrap justify-content-between">
+                    <?php if ( $query->have_posts() ) : ?>
+                        <?php while ( $query->have_posts() ) : $query->the_post(); ?>
+                        <article class="learning-list-item d-flex flex-column pb-4">
+                            <div class="learning-list-image">
+                                <?php the_post_thumbnail( 'medium' ) ?>
+                            </div>
+                            <div class="learning-list-content d-flex flex-column">
+                                <h4><a href="<?php the_permalink();?>"><?php the_title() ?></a></h4>
+                                <div class="course-info d-flex flex-nowrap justify-content-between">
+                                    <?php
+                                        $totalCourse = get_children( ['num_of_posts' => -1, 'post_parent' => get_the_ID() ], ARRAY_A );
+                                        $total = count($totalCourse) + 1;
+                                    ?>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <img src="<?= bloginfo('template_url');?>/images/cert.svg" alt="Course Certificate Icon" />
+                                        <span class="course-des">Course Certificate</span>
+                                    </div>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <img src="<?= bloginfo('template_url');?>/images/login.svg" alt="Login Required Icon" />
+                                        <span class="course-des">Login Required</span>
+                                    </div>
 
-								<div class="d-flex flex-column align-items-center">
-									<img src="<?= bloginfo('template_url');?>/images/cert.svg" alt="Course Certificate Icon" />
-									<span class="course-des">Course Certificate</span>
-								</div>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <img src="<?= bloginfo('template_url');?>/images/lesson.svg" alt="24 Lessons Icon" />
+                                        <span class="course-des"><?= $total ?><br> Lessons</span>
+                                    </div>
 
-								<div class="d-flex flex-column align-items-center">
-									<img src="<?= bloginfo('template_url');?>/images/login.svg" alt="Login Required Icon" />
-									<span class="course-des">Login Required</span>
-								</div>
+                                    <div class="d-flex flex-column align-items-center">
+                                        <img src="<?= bloginfo('template_url');?>/images/time.svg" alt="5hrs 30mins Icon" />
+                                        <span class="course-des">5hrs 30mins</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <?php endwhile;?>
+                        <?php wp_reset_postdata(); ?>
+                    <?php else : ?>
+                    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
 
-								<div class="d-flex flex-column align-items-center">
-									<img src="<?= bloginfo('template_url');?>/images/lesson.svg" alt="24 Lessons Icon" />
-									<span class="course-des">24 Lessons</span>
-								</div>
-
-								<div class="d-flex flex-column align-items-center">
-									<img src="<?= bloginfo('template_url');?>/images/time.svg" alt="5hrs 30mins Icon" />
-									<span class="course-des">5hrs 30mins</span>
-								</div>
-
-							</div>
-						</div>
-					</article>
-					
-					<article class="learning-list-item d-flex flex-column pb-4">
-						<div class="learning-list-image">
-							<img src="<?= bloginfo('template_url');?>/images/popular-courses.jpg" alt="Course Featured Image" />
-						</div>
-						<div class="learning-list-content d-flex flex-column">
-							<h4>Lab 2.0 - The Golden Age of the Clinical Laboratory: Changing the Way Healthcare is Delivered</h4>
-							
-							<div class="course-info d-flex flex-nowrap justify-content-between">
-
-								<div class="d-flex flex-column align-items-center">
-									<img src="<?= bloginfo('template_url');?>/images/cert.svg" alt="Course Certificate Icon" />
-									<span class="course-des">Course Certificate</span>
-								</div>
-
-								<div class="d-flex flex-column align-items-center">
-									<img src="<?= bloginfo('template_url');?>/images/login.svg" alt="Login Required Icon" />
-									<span class="course-des">Login Required</span>
-								</div>
-
-								<div class="d-flex flex-column align-items-center">
-									<img src="<?= bloginfo('template_url');?>/images/lesson.svg" alt="24 Lessons Icon" />
-									<span class="course-des">24 Lessons</span>
-								</div>
-
-								<div class="d-flex flex-column align-items-center">
-									<img src="<?= bloginfo('template_url');?>/images/time.svg" alt="5hrs 30mins Icon" />
-									<span class="course-des">5hrs 30mins</span>
-								</div>
-
-							</div>
-						</div>
-					</article>
-					
-					<article class="learning-list-item d-flex flex-column pb-4">
-						<div class="learning-list-image">
-							<img src="<?= bloginfo('template_url');?>/images/popular-courses.jpg" alt="Course Featured Image" />
-						</div>
-						<div class="learning-list-content d-flex flex-column">
-							<h4>Lab 2.0 - The Golden Age of the Clinical Laboratory: Changing the Way Healthcare is Delivered</h4>
-							
-							<div class="course-info d-flex flex-nowrap justify-content-between">
-
-								<div class="d-flex flex-column align-items-center">
-									<img src="<?= bloginfo('template_url');?>/images/cert.svg" alt="Course Certificate Icon" />
-									<span class="course-des">Course Certificate</span>
-								</div>
-
-								<div class="d-flex flex-column align-items-center">
-									<img src="<?= bloginfo('template_url');?>/images/login.svg" alt="Login Required Icon" />
-									<span class="course-des">Login Required</span>
-								</div>
-
-								<div class="d-flex flex-column align-items-center">
-									<img src="<?= bloginfo('template_url');?>/images/lesson.svg" alt="24 Lessons Icon" />
-									<span class="course-des">24 Lessons</span>
-								</div>
-
-								<div class="d-flex flex-column align-items-center">
-									<img src="<?= bloginfo('template_url');?>/images/time.svg" alt="5hrs 30mins Icon" />
-									<span class="course-des">5hrs 30mins</span>
-								</div>
-
-							</div>
-						</div>
-					</article>
+                    <?php endif; ?>
 
 				</div>
 
 			</section>
 
-		<?php
-		endwhile; // End of the loop.
-		?>
+
 
 	</main><!-- #main -->
 
