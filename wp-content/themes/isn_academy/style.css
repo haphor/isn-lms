@@ -1032,7 +1032,18 @@ aside#secondary {
 }
 
 #home-account .um-field {
-	padding-top: 0px;
+	padding-top: 0;
+	position: relative;
+}
+.um-field-icon {
+	position: absolute;
+	cursor: default;
+	text-align: center !important;
+	top: 2px;
+	left: 0;
+	width: 44px;
+	font-size: 22px;
+	line-height: 1.7em;
 }
 
 .um-field-area .um-field-radio-option,
@@ -1043,8 +1054,11 @@ aside#secondary {
 #home-account .select2-container .select2-choice .select2-arrow:before {
 	color: #262626 !important;
 }
-
+.um-col-alt {
+	margin: 15px 0 5px 0;
+}
 #home-account .um .um-form input[type=text],
+#home-account .um .um-form input[type=email],
 #home-account .um .um-form input[type=search],
 #home-account .um .um-form input[type=tel],
 #home-account .um .um-form input[type=number],
@@ -1052,23 +1066,50 @@ aside#secondary {
 #home-account .um .um-form textarea {
 	color: #262626;
 	border: 1px solid #e2e2e2 !important;
+	background: #ffffff;
+	width: 100%;
+	padding: 0 12px 0 44px;
+	font-size: 15px !important;
 }
 
 #home-account .um-col-1 .um-field-area input {
 	height: 60px !important;
 }
 
-#home-account .um-col-1 {
+#home-account .um-col-1, .form-box {
 	box-shadow: 0px 0px 48px rgba(0, 0, 85, 0.1);
 }
-#home-account .um-col-1 > div:first-child .um-field-area input {
-	border-radius: 10px 10px 0px 0px;
+#home-account .um-col-1 > div:first-child .um-field-area input,
+#home-account .um-col-1 > div:first-child input{
+	border-radius: 10px 10px 0 0;
 }
 
-#home-account .um-col-1 > div:last-child .um-field-area input {
-	border-radius: 0px 0px 10px 10px;
+#home-account .um-col-1 > div:last-child .um-field-area input,
+#home-account .um-col-1 > div:last-child input{
+	border-radius: 0 0 10px 10px;
 }
-
+.um-button{
+	font-size: 15px;
+	border: none !important;
+	display: block;
+	width: 100%;
+	line-height: 1em !important;
+	padding: 16px 20px !important;
+	text-decoration: none !important;
+	text-align: center;
+	text-transform: none !important;
+	font-weight: normal !important;
+	overflow: hidden;
+	position: relative;
+	transition: 0.25s;
+	box-sizing: border-box;
+	-moz-border-radius: 4px !important;
+	-webkit-border-radius: 4px !important;
+	border-radius: 4px !important;
+	-webkit-box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+	box-shadow: 0 4px 6px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+	opacity: 1;
+}
 #home-account .um-field-icon {
 	top: 11px;
 }
@@ -1124,6 +1165,7 @@ span.um-active-color {
 	cursor: pointer;
 	background: #00a1d7;
 	border: 2px solid #00a1d7 !important;
+	box-shadow: none;
 }
 
 #home-account .um-half {
