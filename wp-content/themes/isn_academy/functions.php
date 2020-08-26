@@ -171,6 +171,13 @@ function isn_academy_widgets_init() {
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
+	register_sidebar( array(
+		'name'          => esc_html__( 'Dashboard Navigation', 'isn_academy' ),
+		'id'            => 'dash_nav',
+		'description'   => esc_html__( 'Add widgets here.', 'isn_academy' ),
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
 }
 add_action( 'widgets_init', 'isn_academy_widgets_init' );
 
