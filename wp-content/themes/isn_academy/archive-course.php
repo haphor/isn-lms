@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Dashboard
+ * Template Name: Archive course page
  * Description: A page template for Dashboard Page
  *
  * Please note that this is the WordPress construct of pages
@@ -60,11 +60,12 @@ $courses = new WP_Query( $args );
                                             <img src="<?= bloginfo( 'template_url' ) ?>/images/lesson.svg" alt="24 Lessons Icon" />
                                             <span class="course-des"><?= $total ?> Lessons</span>
                                         </div>
-
+                                        <?php if( !empty($meta['length'] ) ) :?>
                                         <div class="d-flex flex-column align-items-center">
                                             <img src="<?= bloginfo( 'template_url' ) ?>/images/time.svg" alt="5hrs 30mins Icon" />
                                             <span class="course-des"><?= $meta['length']?></span>
                                         </div>
+                                        <?php endif?>
                                     </div>
                                 </div>
                             </article>

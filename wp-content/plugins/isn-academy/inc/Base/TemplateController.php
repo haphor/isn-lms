@@ -51,13 +51,17 @@ class TemplateController extends BaseController
 		global $post;
 		
 		$parent_template = $this->plugin_path . '/templates/ParentTemplate.php';
+        $theme_files = [ 'parent-course.php', 'isn-learning/templates/ParentTemplate.php' ];
+        $exists_in_theme = locate_template($theme_files, false);
 
 		$single_template = $this->plugin_path . '/templates/SingleTemplate.php';
 
 		if ( is_singular( 'course' ) ) {
 			
-			if ( $post->post_type == 'course' &&  $post->post_parent == 0) {
-
+			if ( $post->post_type === 'course' &&  $post->post_parent == 0) {
+			    if ( $exists_in_theme !== '' ) {
+                    return $exists_in_theme;
+                }
 				return $parent_template;
 
 			}

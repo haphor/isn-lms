@@ -88,7 +88,6 @@ get_header();
                             $children_posts = get_children($childArgs);
                             
                             foreach ($children_posts as $children_post) {
-                                // $child_post = get_post( $children_post->ID, ARRAY_A )->post_id;
                                 echo '<li><a href="'.get_the_permalink($children_post).'"> ' . $children_post->post_title.'</a></li>';
 
                             }
@@ -96,9 +95,9 @@ get_header();
                     </ul>
                         <?php
                              if ( !empty($children_posts))	{
-                                echo do_shortcode("[course-navigation]");
+                                echo do_shortcode('[course-navigation]');
                              }
-                             ?>
+                        ?>
                 </div>
             </div>
         </div>
