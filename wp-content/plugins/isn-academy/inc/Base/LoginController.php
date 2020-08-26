@@ -19,9 +19,10 @@ class LoginController extends BaseController
 		add_action( 'after_theme_setup', array( $this, 'login_user' ) );
               
         add_shortcode( 'isn-form-login', array( $this, 'isn_shortcode_login' ) );
-
 		// Filters
-		add_filter( 'login_errors', array( $this, 'login_errors' ), 10, 3 );		
+		add_filter( 'login_errors', array( $this, 'login_errors' ), 10, 3 );
+
+
 
 	}
 
@@ -66,15 +67,11 @@ class LoginController extends BaseController
     public function isn_login_form_valid( $loginemail, $loginpassword) {
 	
 		global $isn_error_validation;
-		
 
 		$isn_error_validation = new \WP_Error;
 
-
 		if ( empty( $loginemail ) || empty( $loginpassword ) ) {
-
 			$isn_error_validation->add('field', ' Please Fill the filed of ISN Login form');
-
 		}
         if( !empty( $loginemail) ) {
     
@@ -97,11 +94,10 @@ class LoginController extends BaseController
                 // if the password is incorrect for the specified user
                 $isn_error_validation->add('empty_password', __('Incorrect password'));
             }
-    
             // retrieve all error messages
             $errors = $isn_error_validation->get_error_messages();
     
-            
+            return $errors;
         }
 	}
 
@@ -111,10 +107,10 @@ class LoginController extends BaseController
 
         $user = get_user_by('email', $_POST['loginemail']);  
         
-		if(empty($errors)) {
+		if( empty($errors) ) {
 		    
             wp_set_current_user($user->ID, $_POST['loginemail']);
-            wp_signon( array( $_POST['loginemail'] , $_POST['loginpassword']), false );	
+            wp_signon( [ $_POST['loginemail'], $_POST['loginpassword'] ] , false );
             
 			do_action('wp_login', $_POST['loginemail']);
 
@@ -128,17 +124,16 @@ class LoginController extends BaseController
 
 		global $loginemail, $loginpassword;
 		if ( isset($_POST['submit'] ) ) {
+
 			$this->isn_login_form_valid(
-			$_POST['loginemail'],
-			$_POST['loginpassword']
+			    $_POST['loginemail'],
+			    $_POST['loginpassword']
 			);
 
 			$loginemail   =   sanitize_user( $_POST['loginemail'] );
 			$loginpassword   =   esc_attr( $_POST['loginpassword'] );
-			$this->isn_user_login_form_completion(
-			$loginemail,
-			$loginpassword
-			);
+
+			$this->isn_user_login_form_completion();
 		}
 			$this->isn_login_form(
 			$loginemail,

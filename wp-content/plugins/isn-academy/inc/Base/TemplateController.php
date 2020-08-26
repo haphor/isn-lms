@@ -20,7 +20,7 @@ class TemplateController extends BaseController
 
 		add_filter( 'single_template', array( $this, 'courseSingle_template' ), 50, 1 );
 
-		//add_filter( 'single_template', array( $this, 'courselogin_template' ) );
+		add_filter( 'single_template', array( $this, 'courselogin_template' ) );
 
 	}
 
