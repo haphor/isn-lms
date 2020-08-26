@@ -32,21 +32,15 @@ class TemplateController extends BaseController
 		if ( is_post_type_archive('course') ) {
 
 			$archive_template = $this->plugin_path . '/templates/ArchiveTemplate.php';
-
 			$theme_files = array('archive-course.php', 'isn-learning/templates/ArchiveTemplate.php');
-
 			$exists_in_theme = locate_template($theme_files, false);
 
-			if ( $exists_in_theme != '' ) {
-
+			if ( $exists_in_theme !== '' ) {
 				return $exists_in_theme;
-
-			} else {
-
-				return $archive_template;
-
 			}
-		}
+
+            return $archive_template;
+        }
 
 		return $template;
 
