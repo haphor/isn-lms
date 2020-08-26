@@ -766,7 +766,9 @@ header#masthead {
 	text-align: end;
 	flex: 1 0 50%;
 }
-
+iframe{
+	border:0;
+}
 /* Posts and pages
 --------------------------------------------- */
 .sticky {

@@ -37,7 +37,6 @@ $courses = new WP_Query( $args );
                             echo '<li><a href="'.get_the_permalink($children_post).'"> ' . $children_post->post_title.'</a></li>';
                         }
                     wp_reset_postdata();
-                    wp_reset_postdata();
                     ?>
                 </div>
             </section>
