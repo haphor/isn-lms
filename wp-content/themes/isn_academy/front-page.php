@@ -55,7 +55,7 @@ $query = new WP_Query( $args );
 				</div>
 				<div class="section-body learning-list d-flex flex-wrap justify-content-between">
 					
-					<article class="learning-list-item d-flex flex-column learning-pdf pb-4">
+					<article class="learning-list-item d-flex flex-column learning-pdf mb-4">
 						<div class="learning-list-content d-flex flex-column">
 							<h4>Obtaining ICE Views to Visualize Ventricular Anatomy with Joshua Silverstein, MD</h4>
 							<span class="learning-info">20 Pages</span>
@@ -66,7 +66,7 @@ $query = new WP_Query( $args );
 						</div>
 					</article>
 					
-					<article class="learning-list-item d-flex flex-column learning-video pb-4">
+					<article class="learning-list-item d-flex flex-column learning-video mb-4">
 						<div class="learning-list-content d-flex flex-column">
 							<h4>Plating Advancements for Fracture Fixation with Michael P. Kowaleski DVM, DACVS, DECVS</h4>
 							<span class="learning-info">47mins 32 secs</span>
@@ -77,7 +77,7 @@ $query = new WP_Query( $args );
 						</div>
 					</article>
 					
-					<article class="learning-list-item d-flex flex-column learning-pdf pb-4">
+					<article class="learning-list-item d-flex flex-column learning-pdf mb-4">
 						<div class="learning-list-content d-flex flex-column">
 							<h4>Posterior Correction of Adolescent Idiopathic Scoliosis with Attention</h4>
 							<span class="learning-info">20 Pages</span>
@@ -102,7 +102,7 @@ $query = new WP_Query( $args );
 				<div class="section-body learning-list d-flex flex-wrap justify-content-between">
                     <?php if ( $query->have_posts() ) : ?>
                         <?php while ( $query->have_posts() ) : $query->the_post(); ?>
-                        <article class="learning-list-item d-flex flex-column pb-4">
+                        <article class="learning-list-item d-flex flex-column mb-4">
                             <div class="learning-list-image hover-zoomin">
                                 <?php the_post_thumbnail( 'medium' ) ?>
                             </div>
