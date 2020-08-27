@@ -62,7 +62,7 @@ $query = new WP_Query( $args );
 						</div>
 						<div class="learning-list-image">
 							<span class="learning-action"><i class="fa fa-download" aria-hidden="true"></i></span>
-							<span class="learning-doc"><img src="<?= bloginfo('template_url');?>/images/learning-pdf.jpg" alt="Learning Document Image" /></span>
+							<span class="learning-doc hover-zoomin"><img src="<?= bloginfo('template_url');?>/images/learning-pdf.jpg" alt="Learning Document Image" /></span>
 						</div>
 					</article>
 					
@@ -71,7 +71,7 @@ $query = new WP_Query( $args );
 							<h4>Plating Advancements for Fracture Fixation with Michael P. Kowaleski DVM, DACVS, DECVS</h4>
 							<span class="learning-info">47mins 32 secs</span>
 						</div>
-						<div class="learning-list-image">
+						<div class="learning-list-image hover-zoomin">
 							<img src="<?= bloginfo('template_url');?>/images/learning-video.jpg" alt="Learning Featured Image" />
 							<span class="learning-action"><i class="fa fa-play" aria-hidden="true"></i></span>
 						</div>
@@ -84,7 +84,7 @@ $query = new WP_Query( $args );
 						</div>
 						<div class="learning-list-image">
 							<span class="learning-action"><i class="fa fa-download" aria-hidden="true"></i></span>
-							<span class="learning-doc"><img src="<?= bloginfo('template_url');?>/images/learning-pdf.jpg" alt="Learning Document Image" /></span>
+							<span class="learning-doc hover-zoomin"><img src="<?= bloginfo('template_url');?>/images/learning-pdf.jpg" alt="Learning Document Image" /></span>
 						</div>
 					</article>
 				
@@ -96,14 +96,14 @@ $query = new WP_Query( $args );
 
 				<div class="section-header d-md-flex flex-wrap justify-content-between align-items-center">
 					<h3>Popular Courses</h3>
-					<a href="#" class="btn btn-blue">View All</a>
+					<a href="<?php echo home_url(); ?>/course" class="btn btn-blue">View All</a>
 				</div>
 
 				<div class="section-body learning-list d-flex flex-wrap justify-content-between">
                     <?php if ( $query->have_posts() ) : ?>
                         <?php while ( $query->have_posts() ) : $query->the_post(); ?>
                         <article class="learning-list-item d-flex flex-column pb-4">
-                            <div class="learning-list-image">
+                            <div class="learning-list-image hover-zoomin">
                                 <?php the_post_thumbnail( 'medium' ) ?>
                             </div>
                             <div class="learning-list-content d-flex flex-column">
