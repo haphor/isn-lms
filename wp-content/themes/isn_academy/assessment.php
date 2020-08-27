@@ -30,7 +30,7 @@ get_header( 'dashboard' );
      </div>
 
      <div class="section-body learning-list assessment-list d-flex flex-wrap justify-content-between">     
-      <article class="assessment-list-item unlocked-assessment d-flex flex-column pb-4">
+      <article class="assessment-list-item unlocked-assessment d-flex flex-column mb-4">
        <div class="assessment-list-content d-flex flex-column">
         <div class="d-flex flex-row align-items-center justify-content-between">
          <h5>General Business Practices: Factory Safety Rules</h5>
@@ -40,7 +40,7 @@ get_header( 'dashboard' );
        </div>
       </article>
       
-      <article class="assessment-list-item unlocked-assessment d-flex flex-column pb-4">
+      <article class="assessment-list-item unlocked-assessment d-flex flex-column mb-4">
        <div class="assessment-list-content d-flex flex-column">
         <div class="d-flex flex-row align-items-center justify-content-between">
          <h5>General Business Practices: Factory Safety Rules</h5>
@@ -50,7 +50,7 @@ get_header( 'dashboard' );
        </div>
       </article>
       
-      <article class="assessment-list-item locked-assessment d-flex flex-column pb-4">
+      <article class="assessment-list-item locked-assessment d-flex flex-column mb-4">
        <div class="assessment-list-content d-flex flex-column">
         <div class="d-flex flex-row align-items-center justify-content-between">
          <h5>General Business Practices: Factory Safety Rules</h5>
@@ -60,7 +60,7 @@ get_header( 'dashboard' );
        </div>
       </article>
       
-      <article class="assessment-list-item locked-assessment d-flex flex-column pb-4">
+      <article class="assessment-list-item locked-assessment d-flex flex-column mb-4">
        <div class="assessment-list-content d-flex flex-column">
         <div class="d-flex flex-row align-items-center justify-content-between">
          <h5>General Business Practices: Factory Safety Rules</h5>
@@ -84,7 +84,7 @@ get_header( 'dashboard' );
      </div>
 
      <div class="section-body learning-list assessment-list d-flex flex-wrap justify-content-between">   
-      <article class="assessment-list-item certificate d-flex flex-column pb-4">
+      <article class="assessment-list-item certificate d-flex flex-column mb-4">
        <div class="assessment-list-content d-flex flex-column">
         <div class="d-flex flex-row align-items-center justify-content-between">
          <h5>General Business Practices: Factory Safety Rules</h5>
@@ -103,7 +103,7 @@ get_header( 'dashboard' );
        </div>
       </article>
       
-      <article class="assessment-list-item certificate d-flex flex-column pb-4">
+      <article class="assessment-list-item certificate d-flex flex-column mb-4">
        <div class="assessment-list-content d-flex flex-column">
         <div class="d-flex flex-row align-items-center justify-content-between">
          <h5>General Business Practices: Factory Safety Rules</h5>

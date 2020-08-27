@@ -133,7 +133,7 @@ set_query_var( 'accordion', $loop );
      </div>
 
      <div class="section-body learning-list assessment-list d-flex flex-wrap justify-content-between">     
-      <article class="assessment-list-item unlocked-assessment d-flex flex-column pb-4">
+      <article class="assessment-list-item unlocked-assessment d-flex flex-column mb-4">
        <div class="assessment-list-content d-flex flex-column">
         <div class="d-flex flex-row align-items-center justify-content-between">
          <h5>General Business Practices: Factory Safety Rules</h5>
@@ -143,7 +143,7 @@ set_query_var( 'accordion', $loop );
        </div>
       </article>
       
-      <article class="assessment-list-item unlocked-assessment d-flex flex-column pb-4">
+      <article class="assessment-list-item unlocked-assessment d-flex flex-column mb-4">
        <div class="assessment-list-content d-flex flex-column">
         <div class="d-flex flex-row align-items-center justify-content-between">
          <h5>General Business Practices: Factory Safety Rules</h5>
@@ -153,7 +153,7 @@ set_query_var( 'accordion', $loop );
        </div>
       </article>
       
-      <article class="assessment-list-item locked-assessment d-flex flex-column pb-4">
+      <article class="assessment-list-item locked-assessment d-flex flex-column mb-4">
        <div class="assessment-list-content d-flex flex-column">
         <div class="d-flex flex-row align-items-center justify-content-between">
          <h5>General Business Practices: Factory Safety Rules</h5>
@@ -163,7 +163,7 @@ set_query_var( 'accordion', $loop );
        </div>
       </article>
       
-      <article class="assessment-list-item locked-assessment d-flex flex-column pb-4">
+      <article class="assessment-list-item locked-assessment d-flex flex-column mb-4">
        <div class="assessment-list-content d-flex flex-column">
         <div class="d-flex flex-row align-items-center justify-content-between">
          <h5>General Business Practices: Factory Safety Rules</h5>
