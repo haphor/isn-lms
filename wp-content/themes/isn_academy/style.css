@@ -2161,6 +2161,44 @@ h3.section-heading {
 }
 
 
+/* Single Course Page */
+#dashboard .single-course-page #last-section h4 {
+	color: #17468B;
+	font-size: 18px;
+	margin-bottom: 15px;
+}
+#dashboard .single-course-page #last-section p {
+	color: #2B2D42;
+}
+
+ul.sub-courses {
+	margin: 0;
+	padding: 0;
+}
+ul.sub-courses li {
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+ul.sub-courses li b {
+	font-size: 50px;
+	margin-top: -5%;
+}
+ul.sub-courses li a,
+ul.sub-courses li span {
+	color: #888;
+	font-size: 16px;
+	text-decoration: none;
+	padding: 6px 3px 6px 15px;
+}
+ul.sub-courses li:hover {
+	background-color: #00a1d7;
+}
+ul.sub-courses li:hover a, 
+ul.sub-courses li:hover b, 
+ul.sub-courses li:hover span {
+	color: #fff;
+}
+
 
 /* Responsive Media Query */
 
