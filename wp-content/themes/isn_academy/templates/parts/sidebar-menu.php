@@ -34,7 +34,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="c-header-icon logout"><i class="fa fa-power-off"></i></div> -->
             </div>
         </div>
     </header>
@@ -48,17 +47,32 @@
         </div>
         <div class="l-sidebar__content">
             <nav class="c-menu js-menu">
+                <div id="dashboard-menu">
                 <?php wp_nav_menu(
                     array(
                         'theme_location' => 'dashboard-menu',
-                        'menu_id'        => 'dashboard-menu',
+                        'menu_id'        => '',
                         'container'      => false,
                         'menu_class'     => 'u-list',
                         'link_before'    => '<div class="c-menu__item__inner"><i>&nbsp;</i><div class="c-menu-item__title"><span>',
                         'link_after'     => '</span></div></div>'
-                        // 'add_li_class'   => 'c-menu__item has-submenu',
                     )
                 ); ?>
+                <?php if( is_user_logged_in() ) { ?>
+                    <ul class="u-list">
+                        <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Log Out">
+                            <a href="<?php echo wp_logout_url() ?>&amp;redirect_to=<?php echo esc_url( site_url() ) ?>">
+                                <div class="c-menu__item__inner">
+                                    <i class=""><img src="<?= bloginfo('template_url');?>/images/logout.svg" alt="Log Out Icon"/></i>
+                                    <div class="c-menu-item__title">
+                                        <span>Log Out</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                <?php } ?>
+                </div>
             </nav>
         </div>
     </div>
