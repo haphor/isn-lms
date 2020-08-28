@@ -11,7 +11,19 @@
                 </div>
                 <div class="c-header-profile d-flex align-items-center pl-4">
                     <div class="c-header-profile-avatar mr-4">
-                        <img src="<?= bloginfo('template_url');?>/images/user-avatar.jpg" alt="Profile Picture"/>
+
+                        <?php if( ! is_user_logged_in() ) { ?>
+                            <img src="<?= bloginfo('template_url');?>/images/user-avatar.jpg" alt="Profile Picture"/>
+                        <?php } else {
+                            $current_user = wp_get_current_user();
+                            if($current_user->user_lastname){
+                                $string = $current_user->user_lastname;
+                                echo '<h1 class="avatar-name">' . $string[0] . '</h1>';
+                            } else {
+                                $string = $current_user->display_name;
+                                echo '<h1 class="avatar-name">' . $string[0] . '</h1>';
+                            }
+                        } ?>
                     </div>
                     <div class="c-header-profile-name">Lekan Akinsaya</div>
                     <div class="c-header-icon has-dropdown">
