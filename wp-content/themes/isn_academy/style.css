@@ -2207,12 +2207,14 @@ ul.sub-courses {
 	padding: 0;
 }
 ul.sub-courses li {
+	font-size: 16px;
 	padding: 5px 10px;
 	border-radius: 5px;
 }
 ul.sub-courses li b {
 	font-size: 50px;
-	margin-top: -5%;
+	margin-top: -6.5%;
+	margin-right: 10px;
 }
 ul.sub-courses li a,
 ul.sub-courses li span {
@@ -2222,6 +2224,7 @@ ul.sub-courses li span {
 	padding: 6px 3px 6px 15px;
 }
 ul.sub-courses li:hover {
+	color: #fff;
 	background-color: #00a1d7;
 }
 ul.sub-courses li:hover a, 
