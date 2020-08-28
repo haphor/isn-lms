@@ -128,5 +128,19 @@ class SingleCourse extends BaseController
         return true;
     }
 
+    public static function onGoingCourse( $userId, $parentId )
+    {
+        $table = (new self)->tableName;
+        global $wpdb;
+        $results = $wpdb->get_results('
+                    SELECT parent_id as ID FROM ' . $table . " 
+                        WHERE  user_id = '" . $userId . "' AND 
+                        parent_id = '" . $parentId . "' AND 
+                        completed = 0
+                ");
+
+        return $results;
+    }
+
 
 }
