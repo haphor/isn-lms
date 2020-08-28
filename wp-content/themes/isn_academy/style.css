@@ -2207,12 +2207,28 @@ ul.sub-courses {
 	padding: 0;
 }
 ul.sub-courses li {
-	padding: 5px 10px;
+	font-size: 16px;
+	padding: 5px 10px 5px 20px;
 	border-radius: 5px;
+	position: relative;
+}
+ul.sub-courses li:before {
+	content: '';
+	top: 10px;
+	left: 3px;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	border-radius: 50px;
+	background-color: #888;
+}
+ul.sub-courses li:hover:before {
+	background-color: #fff;
 }
 ul.sub-courses li b {
 	font-size: 50px;
-	margin-top: -5%;
+	margin-top: -6.5%;
+	margin-right: 10px;
 }
 ul.sub-courses li a,
 ul.sub-courses li span {
@@ -2222,6 +2238,7 @@ ul.sub-courses li span {
 	padding: 6px 3px 6px 15px;
 }
 ul.sub-courses li:hover {
+	color: #fff;
 	background-color: #00a1d7;
 }
 ul.sub-courses li:hover a, 

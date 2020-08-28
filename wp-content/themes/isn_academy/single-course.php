@@ -64,7 +64,7 @@ if( !$is_member ) {
                                 $otherCourses = get_children($args);
 
                                 foreach ($otherCourses as $course) {
-                                    echo '<li class="d-flex flex-row justify-content-between"><b>&#8729;</b> ' . $course->post_title.'<span>0:41</span></li>';
+                                    echo '<li class="d-flex flex-row justify-content-between">' . $course->post_title.'<span>0:41</span></li>';
                                 }
                             ?>
                         <?php endif; ?>
