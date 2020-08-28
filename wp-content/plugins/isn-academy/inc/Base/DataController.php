@@ -30,6 +30,8 @@ class DataController extends BaseController
 			user_id mediumint(9),
 			parent_id mediumint(9),
 			course_id mediumint(9),
+			completed tinyint(2) NOT NULL default '0',
+			updated_ts timestamp NOT NULL default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
 			PRIMARY KEY id (id)
 		) $charset_collate;";
 

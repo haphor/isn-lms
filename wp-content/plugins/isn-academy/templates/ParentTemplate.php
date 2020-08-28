@@ -68,8 +68,7 @@ get_header();
                     </div>
                     <h5>Modules</h5>
                     <ul class="course-modules">
-                        <?php  
-
+                        <?php
                             if ($post->post_parent)	{
                                 $ancestors=get_post_ancestors($post->ID);
                                 $root=count($ancestors)-1;

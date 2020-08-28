@@ -11,6 +11,13 @@ $args = [
 $query = new WP_Query( $args );
 
 $meta = get_post_meta( $post->ID, 'youtube_fields', true );
+$is_member = \Inc\Base\SingleCourse::isMember( $post->ID );
+
+if( !$is_member ) {
+    $parentId = $post->post_parent ?? 0 ;
+    $course = new \Inc\Base\SingleCourse();
+    $course->add( $parentId, $post->ID, false );
+}
 ?>
 <section id="dashboard-content">
     <?php get_template_part( 'templates/parts/sidebar', 'menu' );?>
@@ -35,6 +42,9 @@ $meta = get_post_meta( $post->ID, 'youtube_fields', true );
                             <?php the_title() ?>
                         </h4>
                         <?php echo do_shortcode('[course-navigation]'); ?>
+                    </div>
+                    <div class="single-progress">
+                        <?php //echo do_shortcode('[progress-bar]' ); ?>
                     </div>
                     <p>
                         <?php

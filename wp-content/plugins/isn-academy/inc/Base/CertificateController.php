@@ -19,66 +19,51 @@ class CertificateController extends BaseController
 
 
     public function register() {
-
         add_shortcode('course-navigation',  [ $this, 'gotoNextModule'] );
-
-        add_shortcode('progress-bar',  array( $this, 'ProgressModule') );
-
-        add_shortcode('progress-bar2',  array( $this, 'custom_update_post') );
-
-        add_shortcode('eCertificate',  array( $this, 'generateCertificate') );
-
-        add_action( 'wp_ajax_custom_update_post', array( $this, 'custom_update_post') );
-
+        add_shortcode('progress-bar',  [ $this, 'ProgressModule'] );
+        add_shortcode('eCertificate',  [ $this, 'generateCertificate'] );
+        add_action( 'wp_ajax_custom_update_post', [ $this, 'customUpdatePost' ] );
     }
 
-    public function gotoNextorPrevModule(){
-
-        $post_id = get_the_ID();
-        $parent_id = wp_get_post_parent_id($post_id);
-        $post_type = get_post_type($post_id);
-        if($parent_id == 0){
-            $parent_id = $post_id;
+    public function gotoNextorPrevModule( $id ){
+        $parent_id = wp_get_post_parent_id( $id );
+        if($parent_id === 0){
+            $parent_id = $id;
         }
-        $sibling_list = get_children(
-            array(
-                'order' =>'asc',
-                'post_parent' =>$parent_id,
-                'post_type'=> $post_type
-            ));
 
-        if (!empty($sibling_list) && $parent_id !== 0){
-            $postschild = array();
+        $siblingList = get_children(
+            [
+                'order' => 'asc',
+                'post_parent' => $parent_id,
+                'post_type'=> 'course'
+            ]
+        );
 
-            foreach ($sibling_list as $sibling ) {
-                $postschild[] = $sibling->ID;
-
+        if ( !empty( $siblingList ) && $parent_id !== 0) {
+            $postsChild = [];
+            foreach ($siblingList as $sibling ) {
+                $postsChild[] = $sibling->ID;
             }
 
-            $current = array_search($post_id, $postschild);
-            $prevID = isset($postschild[$current-1]) ? $postschild[$current-1] : false;
-            $nextID = isset($postschild[$current+1]) ? $postschild[$current+1] : false;
-            $prev_link = get_permalink($prevID);
-            $next_link = get_permalink($nextID);
+            $current = array_search( $id, $postsChild, true );
+            $prevID = $postsChild[ $current-1 ] ?? false ;
+            $nextID = $postsChild[ $current+1 ] ?? false;
 
             return $this->displayPrevNext($prevID, $nextID);
 
-        } elseif (!empty($sibling_list) && $parent_id = $post_id) {
+        } elseif (!empty($siblingList) && $parent_id = $id) {
             $postschild = array();
-            foreach ($sibling_list as $sibling ) {
+            foreach ($siblingList as $sibling ) {
                 $postschild[] = $sibling->ID;
             }
-            $current = array_search($post_id, $postschild);
+
+            $current = array_search( $id, $postschild, true );
             $firstID = $postschild[0];
-            $prevID = isset($postschild[$current-1]) ? $postschild[$current-1] : false;
-            $nextID = isset($postschild[$current+1]) ? $postschild[$current+1] : false;
-            $first_link = get_permalink($firstID);
-            $prev_link = get_permalink($prevID);
-            $next_link = get_permalink($nextID);
+            $prevID = $postschild[ $current - 1 ] ?? false;
+            $nextID = $postschild[ $current + 1 ] ?? false;
             $html = '<div class="navigation">';
 
             if( !empty($nextID) ){
-                $nonce = wp_create_nonce( 'ajax_post_validation' );
                 $the_id = get_the_ID();
                 $user_id = get_current_user_id();
                 $post = get_post($the_id);
@@ -96,7 +81,6 @@ class CertificateController extends BaseController
                 $html .= '<input type="hidden" name="user_id" value="'.$user_id.'"/>';
                 $html .= '<input type="hidden" name="parent_id" value="'.$parent_id.'"/>';
                 $html .= '<input type="hidden" name="next_link" class="nxt-link" value="'.get_permalink($firstID).'"/>';
-                // $html .= '<a href="'.get_permalink($nextID).'" class="nxt-course"  id="'.$the_id.'">Next</a>';
                 $html .= '<input type="submit" name="submit" class="nxt-course"  id="'.$the_id.'" value="Next"/>';
                 $html .= '</form></div>';
             }
@@ -105,25 +89,25 @@ class CertificateController extends BaseController
 
             echo $html;
 
-        }elseif (empty($sibling_list) && $parent_id == 0) {
+        }elseif (empty($siblingList) && $parent_id === 0) {
+            return $this->generateCertificate();
+        }
+
+        return '';
+    }
+
+    public function displayPrevNext( $prevID=false, $nextID=false ){
+
+        global $post;
+
+        if( empty($prevID) && empty($nextID) ){
 
             return $this->generateCertificate();
 
         }
-    }
+        $html = '<div class="navigation">';
 
-    public function displayPrevNext($prevID=false, $nextID=false){
-
-        global $post;
-        $post_id = $post->ID;
-
-        if( empty($prevID) && empty($nextID) ){
-
-            return $this->generateCertificate();;
-
-        } elseif (empty($nextID) && !empty($prevID) ) {
-
-            $html = '<div class="navigation">';
+        if( empty($nextID) && !empty($prevID) ) {
 
             if( !empty($prevID) ){
                 $html .= '<div class="alignleft">';
@@ -137,61 +121,57 @@ class CertificateController extends BaseController
 
             return $this->generateCertificate();
 
-        }else{
-
-            $html = '<div class="navigation">';
-
-            if( !empty($prevID) ){
-
-                $html .= '<div class="alignleft">';
-                $html .= '<a href="'.get_permalink($prevID).'">Previous</a>';
-                $html .= '</div>';
-            }
-
-            if( !empty($nextID) ){
-                $nonce = wp_create_nonce( 'ajax_post_validation' );
-                $the_id = get_the_ID();
-                $user_id = get_current_user_id();
-
-                if ($post->post_parent !== 0)	{
-                    $ancestors=get_post_ancestors($post->ID);
-                    $root=count($ancestors)-1;
-                    $parent_id = $ancestors[$root];
-                } else {
-                    $parent_id = $post->ID;
-                }
-
-                $html .= '<div class="alignright">';
-                $html .= '<form method="POST">';
-                $html .= '<input type="hidden" name="user_id" value="'.$user_id.'"/>';
-                $html .= '<input type="hidden" name="parent_id" value="'.$parent_id.'"/>';
-                $html .= '<input type="hidden" name="next_link" class="nxt-link" value="'.get_permalink($nextID).'"/>';
-                $html .= '<input type="submit" name="submit" class="nxt-course"  id="'.$the_id.'" value="Next"/>';
-                $html .= '</form></div>';
-            }
-
-            $html .= '</div><!-- navigation -->';
-
-            echo $html;
-
         }
+
+        if( !empty($prevID) ) {
+            $html .= '<div class="alignleft">';
+            $html .= '<a href="'.get_permalink($prevID).'">Previous</a>';
+            $html .= '</div>';
+        }
+
+        if( !empty($nextID) ){
+            $nonce = wp_create_nonce( 'ajax_post_validation' );
+            $the_id = get_the_ID();
+            $user_id = get_current_user_id();
+
+            if ($post->post_parent !== 0) {
+                $ancestors=get_post_ancestors($post->ID);
+                $root=count($ancestors)-1;
+                $parent_id = $ancestors[$root];
+            } else {
+                $parent_id = $post->ID;
+            }
+
+            $html .= '<div class="alignright">';
+            $html .= '<form method="POST">';
+            $html .= '<input type="hidden" name="user_id" value="'.$user_id.'"/>';
+            $html .= '<input type="hidden" name="parent_id" value="'.$parent_id.'"/>';
+            $html .= '<input type="hidden" name="next_link" class="nxt-link" value="'.get_permalink($nextID).'"/>';
+            $html .= '<input type="submit" name="submit" class="nxt-course"  id="'.$the_id.'" value="Next"/>';
+            $html .= '</form></div>';
+        }
+
+        $html .= '</div><!-- navigation -->';
+
+        echo $html;
+
+        return '';
     }
 
 
-    function custom_update_post() {
+    public function customUpdatePost()
+    {
 
         global $post, $wpdb;
-        $user_table_name = $wpdb->prefix . 'isn_user';
-        $course_table_name = $wpdb->prefix.'isn_course';
-
+        $user_table_name = $wpdb->prefix . 'isn_academy_user';
 
         $linkholder = $this->next_link;
         $post_id = $_POST['post_id'];
         $post = get_post($post_id);
 
         if ($post->post_parent !== 0)	{
-            $ancestors=get_post_ancestors($post->ID);
-            $root=count($ancestors)-1;
+            $ancestors= get_post_ancestors($post->ID);
+            $root= count($ancestors)-1;
             $parent_id = $ancestors[$root];
         } else {
             $parent_id = $post->ID;
@@ -204,49 +184,44 @@ class CertificateController extends BaseController
                 'post_type'=> 'course'
             ));
 
-        if (!empty($sibling_list) && $parent_id !== 0){
-            $postschild = array();
+        $next_link = '';
+        if (!empty($sibling_list) && $parent_id !== 0) {
+            $postschild = [];
 
             foreach ($sibling_list as $sibling ) {
                 $postschild[] = $sibling->ID;
 
             }
-            $current = array_search($post_id, $postschild);
-            $prevID = isset($postschild[$current-1]) ? $postschild[$current-1] : false;
-            $nextID = isset($postschild[$current+1]) ? $postschild[$current+1] : false;
+            $current = array_search( $post_id, $postschild, true );
+            $prevID = $postschild[ $current - 1 ] ?? false;
+            $nextID = $postschild[ $current + 1 ] ?? false;
             $prev_link = get_permalink($prevID);
             $next_link = get_permalink($nextID);
 
         }
-        // $user_id = $_POST['user_id'];
-        // $parent_id = $_POST['parent_id'];
-        // $next_link = $_POST['next_link'];
+
 
         $user_id = get_current_user_id();
-        $parent_id = wp_get_post_parent_id($post_id);
+        $parent_id = wp_get_post_parent_id( $post_id );
 
+        if( isset( $_POST ) ) {
 
-        if(isset($_POST['submit'])) {
-            $allposts = $wpdb->get_row( "SELECT * FROM ".$user_table_name." WHERE userid = ".$user_id." AND courseid = '.$post_id.'" );
-            if (empty($allposts)) {
-                $wpdb->insert($user_table_name,
-                    array(
-                        'userid'  => $user_id,
-                        'parentid' => $parent_id,
-                        'courseid' => $post_id
-                    )
-                );
+            $member = SingleCourse::isMember( $post_id, $user_id );
+            if( $member ) {
+                (new SingleCourse())->update( $post_id, $user_id );
+            } else {
+                (new SingleCourse())->add( $parent_id, $post_id, $user_id );
             }
-
+            echo json_encode( $next_link );
+            exit;
         }
-        wp_die();
     }
 
     function alreadyRed()
     {
 
         global $post, $wpdb, $level;
-        $user_table_name = $wpdb->prefix . 'isn_user';
+        $user_table_name = $wpdb->prefix . 'isn_academy_user';
 
         $post_id = get_the_ID();
         $post = get_post($post_id);
@@ -264,20 +239,20 @@ class CertificateController extends BaseController
 
         }
 
-        $childArgs = array(
+        $childArgs = [
             'post_type' => 'course',
             'post_status' => 'published',
             'post_per_page' => -1,
             'post_parent' => $parent
-        );
+        ];
         $children_posts = get_children($childArgs);
 
         $parent_post = get_post($parent);
 
         $alluserposts = $wpdb->get_results(
             "SELECT * FROM ".$user_table_name." 
-                WHERE userid = ".$user_id." 
-                AND parentid = ".$parent.""
+                WHERE user_id = ".$user_id." 
+                AND parent_id = ".$parent.""
         );
         if (empty($alluserposts)){
             $counter = 0;
@@ -311,9 +286,8 @@ class CertificateController extends BaseController
         $parents = get_post_ancestors( $post->ID );
 
         $parent_post_id = ($parents) ? $parents[count($parents)-1]: $post->ID;
-        // $parent_id = getTopParentPostId();
 
-        $fullName = esc_html( $currentUser->user_firstname ) ." ". esc_html( $currentUser->user_lastname );
+        $fullName = esc_html( $currentUser->user_firstname ) .' '. esc_html( $currentUser->user_lastname );
 
         $courseName = get_the_title ( $parent_post_id );
 
@@ -333,12 +307,6 @@ class CertificateController extends BaseController
             $image = dirname(__FILE__). "/certi.png";
 
             $createimage = imagecreatefrompng($image);
-
-            //this is going to be created once the generate button is clicked dirname(__FILE__).
-            // $output = $this->plugin_url."assets/".strtolower($currentUser->user_firstname)."certificate.png";
-
-            //this is going to be created once the generate button is clicked
-            // $output = dirname(__FILE__)."/certificate.png";
 
             //then we make use of the imagecolorallocate inbuilt php function which i used to set color to the text we are displaying on the image in RGB format
             $white = imagecolorallocate($createimage, 205, 245, 255);
@@ -431,86 +399,24 @@ class CertificateController extends BaseController
     public function gotoNextModule() {
 
         if ( is_singular( 'course' ) ) {
+            $postId = get_the_ID();
+            $post = get_post( $postId );
 
-            $allChildren = array();
-
-            $post_title = get_the_title();
-
-            $post_id = get_the_ID();
-
-            $post = get_post( $post_id );  // find post with given ID
-
-
-            if ( $post ) {  // if that post exists
-
+            if ( $post ) {
                 $parents = get_post_ancestors( $post->ID );
-
                 if (!empty($parents)) {
-
-                    $allChildren[] = $post->ID;  // add its ID to the children
-
-                    $parent_post_id = ($parents) ? $parents[count($parents)-1]: $post->ID;
-
-                    $children = get_children( $parent_post_id );
-
-                    $allChildren[] = array_merge( $allChildren, array_keys( $children ) );  // add children ids to the children array
-
-                    asort($allChildren);
-
-                    $numberOfChildren = count( $allChildren );
-
-                    foreach ( $allChildren as $key => $value) {
-
-                        return $this->gotoNextorPrevModule();
-
-                        for($i=0; $i=$numberOfChildren; $i++){
-
-
-                            return $this->gotoNextorPrevModule();
-                            return $this->generateCertificate();
-
-                        }
-
-                    }
-
+                    return $this->gotoNextorPrevModule( $postId );
                 }
 
                 $children = get_children( $post->ID );
-
                 if (empty($parents) && empty($children) ){
-
                     return $this->generateCertificate();
-
                 }
 
-                if (empty($parents) && !empty($children) ){
-
-                    $allChildren[] = array_merge( $allChildren, array_keys( $children ) );  // add children ids to the children array
-
-                    asort($allChildren);
-
-                    $numberOfChildren = count( $allChildren );
-
-                    foreach ( $allChildren as $key => $value) {
-
-                        return $this->gotoNextorPrevModule();
-
-                        for($i=0; $i=0; $i++){
-
-                            return $this->gotoNextorPrevModule();
-
-                            return $this->generateCertificate();
-
-                        }
-
-                    }
-
-                    return $this->gotoNextorPrevModule();
-
+                if (empty($parents) && !empty($children) ) {
+                    return $this->gotoNextorPrevModule( $postId );
                 }
-
             }
-
         }
     }
 
@@ -523,8 +429,6 @@ class CertificateController extends BaseController
             $countlevel = $this->level;
 
             $allChildren = array();
-
-            $post_title = get_the_title();
 
             $post_id = get_the_ID();
 
@@ -561,11 +465,7 @@ class CertificateController extends BaseController
 
                 $key = array_search($post_id, array_column($children, 'ID'));
 
-                // $level = $this->ob_get_level;
-
                 echo '<div class="isn-progress"><span class="isn-percent" style="width:'.$countlevel.'%"></span></div><strong>'.$countlevel.'%</strong>';
-
-
 
             }
 

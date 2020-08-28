@@ -11,7 +11,7 @@ jQuery(document).ready(function ($) {
                 post_id: post_id
             },
             success: function (data) {
-                location.href = isn_ajax_count_object.redirecturl;
+                location.href = data;
             },
             error: function (errorThrown) {
                 console.log(errorThrown);
