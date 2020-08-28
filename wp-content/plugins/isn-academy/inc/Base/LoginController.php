@@ -211,8 +211,8 @@ class LoginController extends BaseController
         );
 	
 		foreach ( $isnpages as $isnpage ) {
-			// Delete all products.
-			wp_delete_post( $isnpage->ID, true); // Set to False if you want to send them to Trash.
+
+			//wp_delete_post( $isnpage->ID, true); // Set to False if you want to send them to Trash.
 		}
 
         flush_rewrite_rules();

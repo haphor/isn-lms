@@ -62,7 +62,7 @@ get_header();
                             $children_posts = get_children($childArgs);
                             if ( !empty($children_posts))	{
                         
-                                echo do_shortcode("[progress-bar]"); 
+                                echo do_shortcode('[progress-bar]');
                             }
                             ?>
                     </div>
@@ -96,6 +96,8 @@ get_header();
                         <?php
                              if ( !empty($children_posts))	{
                                 echo do_shortcode('[course-navigation]');
+                             } elseif (empty($children_posts)) {
+                                 echo do_shortcode('[eCertificate]' );
                              }
                         ?>
                 </div>

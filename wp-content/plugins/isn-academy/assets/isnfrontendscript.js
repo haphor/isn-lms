@@ -14,8 +14,10 @@ window.addEventListener("load", function () {
     }
 
     // When the user clicks on <span> (x), close the modal
-    spanBtn.onclick = function () {
-        modal.style.display = "none";
+    if( spanBtn ){
+        spanBtn.onclick = function () {
+            modal.style.display = "none";
+        }
     }
 
     // When the user clicks anywhere outside of the modal, close it

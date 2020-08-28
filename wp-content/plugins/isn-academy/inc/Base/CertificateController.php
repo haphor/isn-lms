@@ -17,17 +17,10 @@ class CertificateController extends BaseController
     private $level;
     private $counter;
 
-    // function __construct() {
-
-    //     $this->level = $level;
-    //     $this->counter = $counter;
-
-    // }
 
     public function register() {
-        // parent::__construct( $this->level, $this->counter);
 
-        add_shortcode('course-navigation',  array( $this, 'gotoNextModule'));
+        add_shortcode('course-navigation',  [ $this, 'gotoNextModule'] );
 
         add_shortcode('progress-bar',  array( $this, 'ProgressModule') );
 

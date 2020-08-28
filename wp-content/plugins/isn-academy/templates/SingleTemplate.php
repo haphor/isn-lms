@@ -30,18 +30,18 @@ get_header();
                                 </div>';
                             } else{
                             
-                                echo "Check video ID";
+                                echo 'Check video ID';
 
                             }
                         ?>
                         <h2>Description</h2>
                         <p>
                             <?php
-                            if (is_array($meta) && isset($meta["textarea"])){ echo $meta["textarea"]; } else { echo "Can't Display The Content";} 
+                            if (is_array($meta) && isset($meta['textarea'])){ echo $meta['textarea']; } else { echo "Can't Display The Content";}
                             ?>
                         </p>
                 </div>                
-                    <?php echo do_shortcode("[course-navigation]"); ?>
+                    <?php echo do_shortcode('[course-navigation]'); ?>
                 </div>
             </div>
 
