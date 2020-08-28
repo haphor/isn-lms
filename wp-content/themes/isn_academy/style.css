@@ -2210,6 +2210,17 @@ ul.sub-courses li {
 	font-size: 16px;
 	padding: 5px 10px;
 	border-radius: 5px;
+	position: relative;
+}
+ul.sub-courses li:before {
+	content: '';
+	top: 10px;
+	left: 0px;
+	width: 10px;
+	height: 10px;
+	position: absolute;
+	border-radius: 50px;
+	background-color: #888;
 }
 ul.sub-courses li b {
 	font-size: 50px;
