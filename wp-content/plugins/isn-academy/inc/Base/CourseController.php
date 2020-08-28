@@ -171,7 +171,10 @@ class CourseController extends BaseController
                 ? $isnRedirect
                 : $redirectTo;
         }
-
+        if( empty( $redirectTo ) ) {
+            wp_redirect( home_url( 'dashboard' ) );
+            exit;
+        }
         return $redirectTo;
     }
 
