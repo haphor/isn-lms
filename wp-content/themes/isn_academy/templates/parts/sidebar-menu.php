@@ -24,14 +24,17 @@
                             }
                         } ?>
                     </div>
-                    <div class="c-header-profile-name">Lekan Akinsaya</div>
-                    <div class="c-header-icon has-dropdown">
-                        <i class="fa fa-angle-down"></i>
-                        <div class="c-dropdown">
-                            <div class="c-dropdown__header"></div>
-                            <div class="c-dropdown__content"></div>
+                    <?php if( is_user_logged_in() ) {
+                        $current_user = wp_get_current_user(); ?>
+                        <div class="c-header-profile-name"><?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname;?></div>
+                        <div class="c-header-icon has-dropdown">
+                            <i class="fa fa-angle-down"></i>
+                            <div class="c-dropdown">
+                                <div class="c-dropdown__header"></div>
+                                <div class="c-dropdown__content"></div>
+                            </div>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
                 <!-- <div class="c-header-icon logout"><i class="fa fa-power-off"></i></div> -->
             </div>
