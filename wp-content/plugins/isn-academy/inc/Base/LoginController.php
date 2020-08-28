@@ -205,12 +205,17 @@ class LoginController extends BaseController
 
 
 	public static function isn_delete_all_pages() {
-		$isnpages = get_pages( array( 'post_type' => 'page', 'post_title'  => __( 'Login' ), 'post_content' => '[isn-login-form]'), array( 'post_type' => 'page', 'post_title'  => __( 'Register' ), 'post_content' => '[isn-registration-form]') );
+		$isnpages = get_pages(
+		        array( 'post_type' => 'page', 'post_title'  => __( 'Login' ), 'post_content' => '[isn-login-form]' ),
+                array( 'post_type' => 'page', 'post_title'  => __( 'Register' ), 'post_content' => '[isn-registration-form]')
+        );
 	
 		foreach ( $isnpages as $isnpage ) {
-			// Delete all products.
-			wp_delete_post( $isnpage->ID, true); // Set to False if you want to send them to Trash.
-		} 
+
+			//wp_delete_post( $isnpage->ID, true); // Set to False if you want to send them to Trash.
+		}
+
+        flush_rewrite_rules();
 	}
 	
 }

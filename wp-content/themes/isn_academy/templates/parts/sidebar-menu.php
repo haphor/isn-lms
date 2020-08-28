@@ -40,7 +40,6 @@
         </div>
         <div class="l-sidebar__content">
             <nav class="c-menu js-menu">
-
                 <?php wp_nav_menu(
                     array(
                         'theme_location' => 'dashboard-menu',
@@ -52,7 +51,6 @@
                         // 'add_li_class'   => 'c-menu__item has-submenu',
                     )
                 ); ?>
-
             </nav>
         </div>
     </div>

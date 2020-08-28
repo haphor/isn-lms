@@ -35,6 +35,7 @@ if ( file_exists( dirname( __FILE__ ) . '/vendor/autoload.php' ) ) {
 function activate_isn_learning_plugin() {
 	Inc\Base\Activate::activate();
 	Inc\Base\LoginController::isn_plugin_activation();
+    ( new Inc\Base\DataController )->isnPluginUserTable();
 }
 register_activation_hook( __FILE__, 'activate_isn_learning_plugin' );
 

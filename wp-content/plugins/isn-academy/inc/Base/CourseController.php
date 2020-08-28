@@ -31,9 +31,15 @@ class CourseController extends BaseController
         add_filter( 'login_redirect', [ $this, 'filterLoginRedirect' ], 10, 3 );
         add_action( 'authenticate', [ $this, 'loginFormProcessing' ], 101, 3 );
         add_shortcode( 'isn-custom-login-form', [ $this, 'renderLoginForm' ] );
+        add_action( 'wp_logout', [ $this, 'redirectAfterLogin' ] );
     }
 
-
+    public function redirectAfterLogin () : void
+    {
+        $redirect_url = home_url( 'login?logged_out=true' );
+        wp_safe_redirect( $redirect_url );
+        exit;
+    }
     /**
      * Make sure login page info is loaded on wp-login endpoint as well.
      */
@@ -171,7 +177,10 @@ class CourseController extends BaseController
                 ? $isnRedirect
                 : $redirectTo;
         }
-
+        if( empty( $redirectTo ) ) {
+            wp_redirect( home_url( 'dashboard' ) );
+            exit;
+        }
         return $redirectTo;
     }
 

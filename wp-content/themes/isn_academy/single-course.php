@@ -30,8 +30,19 @@ $meta = get_post_meta( $post->ID, 'youtube_fields', true );
                 </div>
                 <?php } ?>
                 <div class="col-5">
-                    <h4><?php the_title() ?></h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="col-100" style="display: flex; justify-content: space-between">
+                        <h4>
+                            <?php the_title() ?>
+                        </h4>
+                        <?php echo do_shortcode('[course-navigation]'); ?>
+                    </div>
+                    <p>
+                        <?php
+                            if ( is_array( $meta ) && isset( $meta['textarea'] ) ) {
+                                echo $meta['textarea'];
+                            }
+                        ?>
+                    </p>
                     <ul class="sub-courses d-flex flex-column flex-wrap">
                         <?php
                             if( $post->post_parent ) :
@@ -43,7 +54,7 @@ $meta = get_post_meta( $post->ID, 'youtube_fields', true );
                                 $otherCourses = get_children($args);
 
                                 foreach ($otherCourses as $course) {
-                                    echo '<li class="d-flex flex-row justify-content-between"><b>&#8729;</b> <a href="'.get_the_permalink($course).'"> ' . $course->post_title.'</a> <span>0:41</span></li>';
+                                    echo '<li class="d-flex flex-row justify-content-between"><b>&#8729;</b> ' . $course->post_title.'<span>0:41</span></li>';
                                 }
                             ?>
                         <?php endif; ?>
