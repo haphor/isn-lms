@@ -40,54 +40,19 @@
         </div>
         <div class="l-sidebar__content">
             <nav class="c-menu js-menu">
-                <ul class="u-list">
-                    <li class="c-menu__item is-active" data-toggle="tooltip" title="Home">
-                        <div class="c-menu__item__inner">
-                            <i class=""><img src="<?= bloginfo('template_url');?>/images/home.svg" alt="Home Icon"/></i>
-                            <div class="c-menu-item__title">
-                                <span>Home</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Courses">
-                        <div class="c-menu__item__inner">
-                            <i class=""><img src="<?= bloginfo('template_url');?>/images/course.svg" alt="Courses Icon"/></i>
-                            <div class="c-menu-item__title">
-                                <span>Courses</span>
-                            </div>
-                            <div class="c-menu-item__expand js-expand-submenu"><i class="fa fa-angle-down"></i></div>
-                        </div>
-                        <ul class="c-menu__submenu u-list">
-                            <li>Payments</li>
-                            <li>Maps</li>
-                            <li>Notifications</li>
-                        </ul>
-                    </li>
-                    <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Assessments">
-                        <div class="c-menu__item__inner">
-                            <i class=""><img src="<?= bloginfo('template_url');?>/images/assessment.svg" alt="Assessments Icon"/></i>
-                            <div class="c-menu-item__title">
-                                <span>Assessments</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Certificates">
-                        <div class="c-menu__item__inner">
-                            <i class=""><img src="<?= bloginfo('template_url');?>/images/certificates.svg" alt="Certificates Icon"/></i>
-                            <div class="c-menu-item__title">
-                                <span>Certificates</span>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Log Out">
-                        <div class="c-menu__item__inner">
-                            <i class=""><img src="<?= bloginfo('template_url');?>/images/logout.svg" alt="Log Out Icon"/></i>
-                            <div class="c-menu-item__title">
-                                <span>Log Out</span>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+
+                <?php wp_nav_menu(
+                    array(
+                        'theme_location' => 'dashboard-menu',
+                        'menu_id'        => 'dashboard-menu',
+                        'container'      => false,
+                        'menu_class'     => 'u-list',
+                        'link_before'    => '<div class="c-menu__item__inner"><i>&nbsp;</i><div class="c-menu-item__title"><span>',
+                        'link_after'     => '</span></div></div>'
+                        // 'add_li_class'   => 'c-menu__item has-submenu',
+                    )
+                ); ?>
+
             </nav>
         </div>
     </div>

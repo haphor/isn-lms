@@ -1037,6 +1037,7 @@ aside#secondary {
 	padding-top: 0;
 	position: relative;
 }
+
 .um-field-icon {
 	position: absolute;
 	cursor: default;
@@ -1915,6 +1916,32 @@ footer#colophon a.fa-linkedin:hover {
 	-o-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
 }
+.c-menu__item a, 
+.c-menu__item a:visited {
+	color: #fff;
+	text-decoration: none;
+}
+.c-menu__item a i {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+.c-menu__item:first-child a i {
+	background-image: url('../isn_academy/images/home.svg');
+}
+.c-menu__item:nth-child(2) a i {
+	background-image: url('../isn_academy/images/course.svg');
+}
+.c-menu__item:nth-child(3) a i {
+	background-image: url('../isn_academy/images/assessment.svg');
+}
+.c-menu__item:nth-child(4) a i {
+	background-image: url('../isn_academy/images/certificates.svg');
+}
+.c-menu__item:last-child a i {
+	background-image: url('../isn_academy/images/logout.svg');
+}
+
 #dashboard .c-menu > ul .c-menu__item.is-active .c-menu__item__inner {
 	border-left-color: #fff;
 	background-color: #e95345;
