@@ -1,6 +1,6 @@
 <div class="login-form-container">
     <?php if ( $attributes['show_title'] ) : ?>
-        <h2><?php _e( 'Sign In', 'personalize-login' ); ?></h2>
+        <h2><?php _e( 'Sign In', 'isn' ); ?></h2>
     <?php endif; ?>
 
     <!-- Show errors if there are any -->
@@ -15,15 +15,15 @@
     <!-- Show logged out message if user just logged out -->
     <?php if ( $attributes['logged_out'] ) : ?>
         <p class="login-info">
-            <?php _e( 'You have signed out. Would you like to sign in again?', 'personalize-login' ); ?>
+            <?php _e( 'You have signed out. Would you like to sign in again?', 'isn' ); ?>
         </p>
     <?php endif; ?>
 
     <?php
     wp_login_form(
         array(
-            'label_username' => __( 'Email', 'personalize-login' ),
-            'label_log_in' => __( 'Sign In', 'personalize-login' ),
+            'label_username' => __( 'Email', 'isn' ),
+            'label_log_in' => __( 'Sign In', 'isn' ),
             'redirect' => $attributes['redirect'],
         )
     );

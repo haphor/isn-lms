@@ -79,14 +79,18 @@
                             </div>
                         </div>
                     </li>
+                    <?php if( is_user_logged_in() ) { ?>
                     <li class="c-menu__item has-submenu" data-toggle="tooltip" title="Log Out">
-                        <div class="c-menu__item__inner">
-                            <i class=""><img src="<?= bloginfo('template_url');?>/images/logout.svg" alt="Log Out Icon"/></i>
-                            <div class="c-menu-item__title">
-                                <span>Log Out</span>
+                        <a href="<?php echo wp_logout_url() ?>&amp;redirect_to=<?php echo esc_url( site_url() ) ?>">
+                            <div class="c-menu__item__inner">
+                                <i class=""><img src="<?= bloginfo('template_url');?>/images/logout.svg" alt="Log Out Icon"/></i>
+                                <div class="c-menu-item__title">
+                                    <span>Log Out</span>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     </li>
+                    <?php } ?>
                 </ul>
             </nav>
         </div>
