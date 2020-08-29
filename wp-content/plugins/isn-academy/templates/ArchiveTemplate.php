@@ -19,7 +19,7 @@ get_header();
                     'post_parent' => 0,
                     'post_status' => 'published',
                     'order'     => 'ASC',
-                    'post_type' => 'course' //custom_post_type
+                    'post_type' => 'course'
                 );
                 $the_query = new WP_Query( $args );
                 // The Loop

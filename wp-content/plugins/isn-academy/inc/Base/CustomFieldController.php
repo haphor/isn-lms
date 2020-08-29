@@ -20,12 +20,109 @@ class CustomFieldController extends BaseController
         /* Hook meta box to just the 'place' post type. */
 
         add_action( 'add_meta_boxes', array( $this, 'add_youtube_video_ID') );
-
         add_action( 'save_post', array( $this, 'save_youtube_video_ID' ) );
 
+        add_action( 'add_meta_boxes', [ $this, 'addUploadContent' ] );
+        add_action( 'admin_print_scripts', [ $this, 'adminScripts' ] );
+        add_action( 'save_post', [ $this, 'saveMediaMeta' ], 1, 2 );
     }
 
     
+    public function addUploadContent() : void
+    {
+        add_meta_box('academy_content',
+            'Media Upload',
+            [ $this, 'isnMediaUpload' ],
+            'course',
+            'normal',
+            'default'
+        );
+    }
+
+    public function saveMediaMeta( $postID, $post )
+    {
+        if ( !wp_verify_nonce( $_POST['course_media'], plugin_basename( __FILE__ ) ) ) {
+            return $post -> ID;
+        }
+        if ( !current_user_can( 'edit_post', $post->ID ) ) {
+            return $post->ID;
+        }
+
+        $media_meta['isn_media_file'] = $_POST['isn_media_file'];
+
+        foreach( $media_meta as $key => $value ) {
+            if( $post->post_type === 'revision' ) {
+                return;
+            }
+            $value = implode( ',', (array) $value );
+            if( get_post_meta( $post->ID, $key, false ) ) {
+                update_post_meta( $post-> ID, $key, $value );
+            } else {
+                add_post_meta( $post->ID, $key, $value );
+            }
+            if (!$value) {
+                delete_post_meta($post -> ID, $key);
+            }
+        }
+    }
+
+    public function adminScripts()
+    {
+        wp_enqueue_script( 'media-upload' );
+        wp_enqueue_script( 'thickbox' );
+        wp_enqueue_style( 'thickbox' );
+    }
+
+
+    public function isnMediaUpload()
+    {
+        global $post, $wpdb;
+        echo '<input type="hidden" name="course_media" id="course_media" value="'.
+            wp_create_nonce( plugin_basename( __FILE__ ) ).
+            '" />';
+        $strFile = get_post_meta( $post -> ID, $key = 'isn_media_file', true );
+        $media_file = get_post_meta( $post -> ID, $key = '_wp_attached_file', true );
+
+        if (!empty($media_file)) {
+            $strFile = $media_file;
+        } ?>
+        <script>
+            var file_frame;
+            jQuery('#upload_image_button').live('click', function( media ) {
+                media.preventDefault();
+                if (file_frame) {
+                    file_frame.open();
+                    return;
+                }
+                file_frame = wp.media.frames.file_frame = wp.media({
+                    title: jQuery(this).data('uploader_title'),
+                    button: {
+                        text: jQuery(this).data('uploader_button_text'),
+                    },
+                    multiple: false // Set to true to allow multiple files to be selected
+                });
+                file_frame.on('select', function(){
+                    attachment = file_frame.state().get('selection').first().toJSON();
+                    var url = attachment.url;
+                    var field = document.getElementById("isn_media_file");
+                    field.value = url;
+                })
+            })
+        </script>
+        <div>
+            <table>
+                <tr>
+                    <td>
+                        <input value = "<?php echo $strFile; ?>" type ="text" name="isn_media_file" id="isn_media_file" size = "70" />
+                        <input id = "upload_image_button" type = "button"  value = "Upload">
+                    </td>
+                </tr>
+            </table>
+            <input type = "hidden" name= "img_txt_id"  id= "img_txt_id"  value= "" />
+        </div>
+    <?php
+    }
+
 
     public function add_youtube_video_ID() {
         add_meta_box(
@@ -51,9 +148,14 @@ class CustomFieldController extends BaseController
                 <input type="text" name="youtube_fields[text]" id="youtube_fields[text]" class="regular-text" value="<?php if (is_array($meta) && isset($meta['text'])) {	echo $meta['text']; } ?>"  rows="1" cols="100" >
             </p>
             <p>
-                <label for="youtube_fields[textarea]">Youtube Video Description</label>
+                <label for="youtube_fields[type]">Course type</label>
                 <br>
-                <textarea name="youtube_fields[textarea]" id="youtube_fields[textarea]" rows="10" cols="100" style="width:500px;"><?php if (is_array($meta) && isset($meta['textarea'])) {	echo $meta['textarea']; } ?></textarea>
+                <select name="youtube_fields[type]" id="">
+                    <option value="">Select an option</option>
+                    <option <?=  ( $meta['type'] && $meta['type'] === 'video' ) ? 'selected' : ''?> value="video">Video</option>
+                    <option <?=  ( $meta['type'] && $meta['type'] === 'pdf' ) ? 'selected' : ''?> value="pdf">PDF</option>
+                    <option <?=  ( $meta['type'] && $meta['type'] === 'pptx' ) ? 'selected' : ''?> value="pptx">PPTX</option>
+                </select>
             </p>
 
             <p>

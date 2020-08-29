@@ -297,7 +297,7 @@ class CertificateController extends BaseController
         $name_len = strlen($fullName);
         $occupation = strtoupper($courseName);
 
-        if ($name !== "" || $occupation !== "") {
+        if ( $name !== '' || $occupation !== '' ) {
 
             if ($occupation) {
                 $font_size_occupation = 10;
