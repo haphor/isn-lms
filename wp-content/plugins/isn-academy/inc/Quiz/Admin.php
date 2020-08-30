@@ -130,7 +130,7 @@ class Admin extends BaseController
     public function filterWpInsertPostData( array $data, array $postarr ) : array
     {
         if( wp_doing_ajax()
-            || ! isset( $_POST['post_type'] )
+            || !isset( $_POST['post_type'] )
             || $_POST['post_type'] !== PostType::ASSESSMENT
             || isset( $data['meta_input'] )
             || empty( $postarr['ID'] )

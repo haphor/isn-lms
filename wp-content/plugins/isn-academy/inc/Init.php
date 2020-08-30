@@ -45,7 +45,6 @@ final class Init
 		}
 
         ( new Component() )->init();
-        ( new Admin() )->init();
 	}
 
 	/**

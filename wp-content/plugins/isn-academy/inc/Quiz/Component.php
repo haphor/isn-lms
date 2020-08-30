@@ -17,6 +17,13 @@ class Component
     public function init() : void
     {
         $this->registerCallbacks();
+        if( is_admin() ) {
+            ( new Template() )->init();
+
+            wp_doing_ajax()
+                ? ''
+                : ( new Admin() )->init();
+        }
     }
 
     private function registerCallbacks() : void
