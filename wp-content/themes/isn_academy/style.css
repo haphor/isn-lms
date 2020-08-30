@@ -2247,6 +2247,9 @@ ul.sub-courses li span {
 	text-decoration: none;
 	padding: 6px 3px 6px 15px;
 }
+ul.sub-courses li span{
+	text-transform: uppercase;
+}
 ul.sub-courses li:hover {
 	color: #fff;
 	background-color: #00a1d7;

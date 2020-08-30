@@ -85,7 +85,7 @@ class CertificateController extends BaseController
                 $html .= '</form></div>';
             }
 
-            $html .= '</div><!-- navigation -->';
+            $html .= '</div>';
 
             echo $html;
 
@@ -161,38 +161,36 @@ class CertificateController extends BaseController
 
     public function customUpdatePost()
     {
+        global $post;
 
-        global $post, $wpdb;
-        $user_table_name = $wpdb->prefix . 'isn_academy_user';
-
-        $linkholder = $this->next_link;
         $post_id = $_POST['post_id'];
-        $post = get_post($post_id);
+        $post = get_post( $post_id );
+        $parentID = 0;
 
         if ($post->post_parent !== 0)	{
-            $ancestors= get_post_ancestors($post->ID);
+            $ancestors= get_post_ancestors( $post->ID );
             $root= count($ancestors)-1;
-            $parent_id = $ancestors[$root];
+            $parentID = $ancestors[$root];
         } else {
-            $parent_id = $post->ID;
+            $parentID = $post->ID;
         }
 
         $sibling_list = get_children(
             array(
                 'order' =>'asc',
-                'post_parent' =>$parent_id,
+                'post_parent' => $parentID,
                 'post_type'=> 'course'
             ));
 
         $next_link = '';
-        if (!empty($sibling_list) && $parent_id !== 0) {
+        if (!empty($sibling_list) && $parentID !== 0) {
             $postschild = [];
 
             foreach ($sibling_list as $sibling ) {
                 $postschild[] = $sibling->ID;
 
             }
-            $current = array_search( $post_id, $postschild, true );
+            $current = array_search( $post->ID, $postschild, true );
             $prevID = $postschild[ $current - 1 ] ?? false;
             $nextID = $postschild[ $current + 1 ] ?? false;
             $prev_link = get_permalink($prevID);
@@ -201,17 +199,15 @@ class CertificateController extends BaseController
         }
 
 
-        $user_id = get_current_user_id();
-        $parent_id = wp_get_post_parent_id( $post_id );
-
+        $userID = get_current_user_id();
         if( isset( $_POST ) ) {
-
-            $member = SingleCourse::isMember( $post_id, $user_id );
+            $member = SingleCourse::isMember( $post->ID, $userID );
             if( $member ) {
-                (new SingleCourse())->update( $post_id, $user_id );
+                (new SingleCourse())->update( $post->ID, $userID );
             } else {
-                (new SingleCourse())->add( $parent_id, $post_id, $user_id );
+                (new SingleCourse())->add( $parentID, $post->ID, $userID );
             }
+
             echo json_encode( $next_link );
             exit;
         }

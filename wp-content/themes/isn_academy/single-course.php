@@ -72,7 +72,16 @@ if(  $media &&  $meta['type'] !== 'video' ) {
                                 $otherCourses = get_children($args);
 
                                 foreach ($otherCourses as $course) {
-                                    echo '<li class="d-flex flex-row justify-content-between">' . $course->post_title.'<span>0:41</span></li>';
+                                    $meta = get_post_meta( $course->ID, 'youtube_fields', true );
+                                    if( is_array( $meta ) && $meta['type'] === 'video' ) {
+                                        $stamp = $meta['length'];
+                                    } else {
+                                        $stamp = $meta['type'];
+                                    }
+                                    echo
+                                        '<li class="d-flex flex-row justify-content-between">' .
+                                        $course->post_title.
+                                        '<span>'. $stamp .'</span></li>';
                                 }
                             ?>
                         <?php endif; ?>
