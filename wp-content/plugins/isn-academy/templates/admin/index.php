@@ -11,7 +11,7 @@ if( $current_screen->post_type === PostType::ASSESSMENT ) : ?>
     <style>#postdivrich { display: none; } </style>
 <?php endif; ?>
 
-<div id="ec_<?php echo $_id ?>" class="postbox <?php echo wp_doing_ajax() || $current_screen->post_type === PostType::ASSESSMENT ? '' : 'closed' ?>" data-id="<?php echo $_id ?>">
+<div id="as_<?php echo $_id ?>" class="postbox <?php echo wp_doing_ajax() || $current_screen->post_type === PostType::ASSESSMENT ? '' : 'closed' ?>" data-id="<?php echo $_id ?>">
     <?php do_action( 'as_admin_heading', $post, $_id ); ?>
 
     <div class="tabs">
