@@ -184,8 +184,11 @@ class CourseController extends BaseController
         return $redirectTo;
     }
 
+
     /**
      * Get redirect URL (if set)
+     *
+     * @param null $redirectTo
      *
      * @return void
      */
@@ -202,6 +205,7 @@ class CourseController extends BaseController
         } else {
             wp_redirect( home_url( 'dashboard' ) );
         }
+        exit;
     }
 
 	public function actionBeforeLoginPage() : void
