@@ -22,7 +22,7 @@ if( $current_screen->post_type === PostType::ASSESSMENT ) : ?>
                 <ul id="as_text-<?php echo $_id ?>-tabs" class="as_text-tabs content-tabs">
 
                 </ul>
-                <div id="as_-<?php echo $_id ?>" class="tabs-panel<?php echo $i ? ' hidden' : '' ?>">
+                <div id="as_-<?php echo $_id ?>" class="tabs-panel">
                     <?php do_action( 'as_admin_type_content', $post, $_id ); ?>
                 </div>
 

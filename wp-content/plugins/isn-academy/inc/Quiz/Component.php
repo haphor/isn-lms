@@ -70,11 +70,11 @@ class Component
                     $wp_query->query['name']
                 )
             );
-        }
 
-        if( $parentID ) {
-            // Modify query to reflect post_parent query.
-            $wp_query->parse_query( [ 'p' => $parentID, 'post_type' => 'any' ] );
+            if( $parentID ) {
+                // Modify query to reflect post_parent query.
+                $wp_query->parse_query( [ 'p' => $parentID, 'post_type' => 'any' ] );
+            }
         }
     }
 
