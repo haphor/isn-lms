@@ -42,9 +42,10 @@ class Admin extends BaseController
 			array(
 				'page_title' => 'ISN Learning Plugin', 
 				'menu_title' => 'ISN Learning', 
-				'capability' => 'manage_options', 
-				'menu_slug' => 'isn_learning', 
-				'callback' =>  array( $this->callbacks, 'adminDashboard' ), 
+				'capability' => 'manage_options',
+                'menu_slug' => 'edit.php?post_type=course',
+                'parent_slug' => 'isn_learning',
+                'callback' => null,
 				'icon_url' => 'dashicons-welcome-learn-more', 
 				'position' => 10
 			)

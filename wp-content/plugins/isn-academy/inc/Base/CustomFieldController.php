@@ -138,10 +138,17 @@ class CustomFieldController extends BaseController
     }
 
 
-    public function show_youtube_video_ID() {
-        global $post;  
-        
-            $meta = get_post_meta( $post->ID, 'youtube_fields', true ); ?>
+    public function show_youtube_video_ID()
+    {
+        global $post;
+        $meta = get_post_meta( $post->ID, 'youtube_fields', true );
+        $args = [
+            'post_type' => 'assessment',
+            'post_parent' => 0,
+            'post_status' => 'publish',
+        ];
+        $assessment = new \WP_Query( $args );
+    ?>
             <input type="hidden" name="your_meta_box_nonce" value="<?php echo wp_create_nonce( basename(__FILE__) ); ?>">
 
             <p>
@@ -149,14 +156,30 @@ class CustomFieldController extends BaseController
                 <br>
                 <input type="text" name="youtube_fields[text]" id="youtube_fields[text]" class="regular-text" value="<?php if (is_array($meta) && isset($meta['text'])) {	echo $meta['text']; } ?>"  rows="1" cols="100" >
             </p>
+            <?php if( $post->post_parent === 0 )  { ?>
             <p>
-                <label for="youtube_fields[type]">Course type</label>
+                <label for="your_fields[type]">Course Type</label>
                 <br>
-                <select name="youtube_fields[type]" id="">
+                <select name="youtube_fields[type]" id="youtube_fields[type]">
                     <option value="">Select an option</option>
                     <option <?=  ( $meta && $meta['type'] === 'video' ) ? 'selected' : ''?> value="video">Video</option>
                     <option <?=  ( $meta && $meta['type'] === 'pdf' ) ? 'selected' : ''?> value="pdf">PDF</option>
                     <option <?=  ( $meta && $meta['type'] === 'pptx' ) ? 'selected' : ''?> value="pptx">PPTX</option>
+                </select>
+                <input type="text" name="youtube_fields[text]" id="youtube_fields[text]" class="regular-text" value="<?php if (is_array($meta) && isset($meta['text'])) {	echo $meta['text']; } ?>"  rows="1" cols="100" >
+            </p>
+            <?php } ?>
+            <p>
+                <label for="youtube_fields[assessment]">Assessment</label>
+                <br>
+                <select name="youtube_fields[assessment]" id="youtube_fields[assessment]">
+                    <option value="">Select an option</option>
+                    <?php while ( $assessment->have_posts() ) : $assessment->the_post(); ?>
+                        <?php $assessmentId = ($meta && isset($meta['assessment'] ) ? $meta['assessment'] : '' ) ?>
+                    <option <?=  ( (int) $assessmentId === get_the_ID() ) ? 'selected' : ''?>
+                            value="<?php echo get_the_ID() ?>"><?php the_title(); ?>
+                    </option>
+                    <?php endwhile; ?>
                 </select>
             </p>
 
