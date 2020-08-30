@@ -41,27 +41,29 @@ class CustomFieldController extends BaseController
 
     public function saveMediaMeta( $postID, $post )
     {
-        if ( !wp_verify_nonce( $_POST['course_media'], plugin_basename( __FILE__ ) ) ) {
-            return $post -> ID;
+        if ( $_POST && !wp_verify_nonce( $_POST['course_media'], plugin_basename( __FILE__ ) ) ) {
+            return $post->ID;
         }
         if ( !current_user_can( 'edit_post', $post->ID ) ) {
             return $post->ID;
         }
 
-        $media_meta['isn_media_file'] = $_POST['isn_media_file'];
+        if (isset($_POST['isn_media_file'])) {
+            $media_meta['isn_media_file'] = $_POST['isn_media_file'];
 
-        foreach( $media_meta as $key => $value ) {
-            if( $post->post_type === 'revision' ) {
-                return;
-            }
-            $value = implode( ',', (array) $value );
-            if( get_post_meta( $post->ID, $key, false ) ) {
-                update_post_meta( $post-> ID, $key, $value );
-            } else {
-                add_post_meta( $post->ID, $key, $value );
-            }
-            if (!$value) {
-                delete_post_meta($post -> ID, $key);
+            foreach( $media_meta as $key => $value ) {
+                if( $post->post_type === 'revision' ) {
+                    return;
+                }
+                $value = implode( ',', (array) $value );
+                if( get_post_meta( $post->ID, $key, false ) ) {
+                    update_post_meta( $post-> ID, $key, $value );
+                } else {
+                    add_post_meta( $post->ID, $key, $value );
+                }
+                if (!$value) {
+                    delete_post_meta($post -> ID, $key);
+                }
             }
         }
     }
@@ -152,9 +154,9 @@ class CustomFieldController extends BaseController
                 <br>
                 <select name="youtube_fields[type]" id="">
                     <option value="">Select an option</option>
-                    <option <?=  ( $meta['type'] && $meta['type'] === 'video' ) ? 'selected' : ''?> value="video">Video</option>
-                    <option <?=  ( $meta['type'] && $meta['type'] === 'pdf' ) ? 'selected' : ''?> value="pdf">PDF</option>
-                    <option <?=  ( $meta['type'] && $meta['type'] === 'pptx' ) ? 'selected' : ''?> value="pptx">PPTX</option>
+                    <option <?=  ( $meta && $meta['type'] === 'video' ) ? 'selected' : ''?> value="video">Video</option>
+                    <option <?=  ( $meta && $meta['type'] === 'pdf' ) ? 'selected' : ''?> value="pdf">PDF</option>
+                    <option <?=  ( $meta && $meta['type'] === 'pptx' ) ? 'selected' : ''?> value="pptx">PPTX</option>
                 </select>
             </p>
 
@@ -169,8 +171,8 @@ class CustomFieldController extends BaseController
                 <br>
                 <select name="youtube_fields[certificate]" id="">
                     <option value="">Select an option</option>
-                    <option <?=  ( $meta['certificate'] === '1' ) ? 'selected' : ''?> value="1">Yes</option>
-                    <option <?=  ( $meta['certificate'] === '0' ) ? 'selected' : ''?> value="0">No</option>
+                    <option <?=  ( $meta && $meta['certificate'] === '1' ) ? 'selected' : ''?> value="1">Yes</option>
+                    <option <?=  ( $meta && $meta['certificate'] === '0' ) ? 'selected' : ''?> value="0">No</option>
                 </select>
             </p>
 

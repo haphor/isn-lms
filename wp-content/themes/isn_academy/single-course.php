@@ -11,12 +11,21 @@ $args = [
 $query = new WP_Query( $args );
 
 $meta = get_post_meta( $post->ID, 'youtube_fields', true );
+$media = get_post_meta( $post->ID, 'isn_media_file', true );
 $is_member = \Inc\Base\SingleCourse::isMember( $post->ID );
 
 if( !$is_member ) {
     $parentId = $post->post_parent ?? 0 ;
     $course = new \Inc\Base\SingleCourse();
     $course->add( $parentId, $post->ID, false );
+}
+$courseType = 'video';
+if( is_array( $meta ) && $meta['type'] === 'video' ) {
+    $videoId = $meta['text'] ?? '';
+}
+if(  $media &&  $meta['type'] !== 'video' ) {
+    $courseType = 'media';
+    $file = $media;
 }
 ?>
 <section id="dashboard-content">
@@ -25,17 +34,16 @@ if( !$is_member ) {
     <main class="l-main single-course-page">
         <div class="content-wrapper content-wrapper--with-bg">
             <section id="last-section" class="section-padding d-flex flex-row">
-                <?php
-                    if( is_array( $meta ) && isset( $meta['text'] ) !== '') {
-                        $videoId = $meta['text'];
-                ?>
                 <div class="col-7">
-                    <iframe title="" width="100%" height="400"
-                        src="https://www.youtube.com/embed/<?= $videoId ?>?disablekb=1&loop=1&modestbranding=1"
-                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                    </iframe>
+                    <?php if( $courseType === 'video' ){ ?>
+                        <iframe title="" width="100%" height="400"
+                                src="https://www.youtube.com/embed/<?= $videoId ?>?disablekb=1&loop=1&modestbranding=1"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                        </iframe>
+                    <?php } else { ?>
+                        <object data="<?= $media ?>" height="400" type="application/pdf" width="100%"></object>
+                    <?php } ?>
                 </div>
-                <?php } ?>
                 <div class="col-5">
                     <div class="col-100" style="display: flex; justify-content: space-between">
                         <h4>
