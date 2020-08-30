@@ -4,6 +4,9 @@
  */
 namespace Inc;
 
+use Inc\Quiz\Admin;
+use Inc\Quiz\Component;
+
 final class Init
 {
 	/**
@@ -30,9 +33,9 @@ final class Init
 	/**
 	 * Loop through the classes, initialize them, 
 	 * and call the register() method if it exists
-	 * @return
+	 * @return void
 	 */
-	public static function register_services() 
+	public static function register_services()  : void
 	{
 		foreach ( self::get_services() as $class ) {
 			$service = self::instantiate( $class );
@@ -40,6 +43,9 @@ final class Init
 				$service->register();
 			}
 		}
+
+        ( new Component() )->init();
+        ( new Admin() )->init();
 	}
 
 	/**

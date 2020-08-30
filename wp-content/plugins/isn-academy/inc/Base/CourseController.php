@@ -303,7 +303,7 @@ class CourseController extends BaseController
             'menu_icon'             => 'dashicons-video-alt3',
             'show_in_admin_bar'     => true,
             'show_in_nav_menus'     => true,
-            'can_export'            => false,
+            'can_export'            => true,
             'has_archive'           => 'course',
             'exclude_from_search'   => false,
             'publicly_queryable'    => true,
