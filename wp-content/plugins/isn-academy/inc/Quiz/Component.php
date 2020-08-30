@@ -21,7 +21,7 @@ class Component
             ( new Template() )->init();
 
             wp_doing_ajax()
-                ? ''
+                ? ( new Quiz() )->init()
                 : ( new Admin() )->init();
         }
     }
