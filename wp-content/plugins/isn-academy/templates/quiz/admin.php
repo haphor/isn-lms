@@ -20,7 +20,7 @@ $q = $o = 0;
 
 ?>
 
-<label for="<?php echo $_id . '_transcript' ?>">Content</label>
+<label for="<?php echo $_id . '_transcript' ?>">Assessment Content</label>
 <?php
 
 ?>

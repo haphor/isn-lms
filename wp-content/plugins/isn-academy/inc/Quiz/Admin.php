@@ -138,7 +138,7 @@ class Admin extends BaseController
             return $data;
         }
 
-        $parsed = self::parse_update_args();
+        $parsed = self::parseUpdateArgs();
         if( ! empty( $parsed['meta_input'] ) ) {
             foreach( $parsed['meta_input'] as $field => $value ) {
                 update_post_meta( $postarr['ID'], $field, $value );

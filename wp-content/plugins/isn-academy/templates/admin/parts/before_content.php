@@ -9,6 +9,5 @@ if( !empty( $post ) ) : ?>
     <p>
         <label for="as_<?php echo $post->ID ?>_post_title">Title</label>
         <input type="text" class="widefat" name="as_<?php echo $post->ID ?>_post_title" size="30" value="<?php echo esc_attr( $post->post_title ) ?>" id="as_<?php echo $post->ID ?>_post_title" spellcheck="true" autocomplete="off" data-cip-id="title">
-        <input type="text" class="widefat" name="as_<?php echo $post->ID ?>_post_title" size="30" value="<?php echo esc_attr( $post->post_title ) ?>" id="as_<?php echo $post->ID ?>_post_title" spellcheck="true" autocomplete="off" data-cip-id="title">
     </p>
 <?php endif; ?>
