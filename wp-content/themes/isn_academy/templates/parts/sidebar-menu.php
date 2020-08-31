@@ -12,7 +12,7 @@
                 <div class="c-header-profile d-flex align-items-center pl-4">
                     <div class="c-header-profile-avatar mr-4">
                         <?php if( ! is_user_logged_in() ) { ?>
-                            <img src="<?= bloginfo('template_url');?>/images/user-avatar.jpg" alt="Profile Picture"/>
+                            <h1 class="avatar-name">L</h1>
                         <?php } else {
                             $current_user = wp_get_current_user();
                             if($current_user->user_lastname){
@@ -29,12 +29,25 @@
                         <div class="c-header-profile-name"><?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname;?></div>
                         <div class="c-header-icon has-dropdown">
                             <i class="fa fa-angle-down"></i>
-                            <div class="c-dropdown">
+                            <div class="c-dropdown d-flex flex-column align-items-center">
                                 <div class="c-dropdown__header"></div>
-                                <div class="c-dropdown__content"></div>
+                                <div class="c-dropdown__content d-flex flex-column align-items-center"></div>
                             </div>
                         </div>
-                    <?php } ?>
+                    <?php } else { ?>
+                        <div class="c-header-icon has-dropdown">
+                            <i class="fa fa-angle-down"></i>
+                            <div class="c-dropdown d-flex flex-column align-items-center">
+                                <div class="c-dropdown__header"></div>
+                                <div class="c-dropdown__content d-flex flex-column align-items-center">
+                                    <ul>
+                                        <li> <a href="#">Login</a> </li>
+                                        <li> <a href="#">Register</a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    <?php }?>
                 </div>
                 <!-- <div class="c-header-icon logout"><i class="fa fa-power-off"></i></div> -->
             </div>

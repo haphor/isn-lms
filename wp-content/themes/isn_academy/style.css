@@ -1789,7 +1789,7 @@ footer#colophon a.fa-linkedin:hover {
 	right: 40px;
 	background-color: #fff;
 	overflow: hidden;
-	min-height: 300px;
+	/* min-height: 300px; */
 	border: 1px solid #d0d0d0;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
@@ -1818,6 +1818,43 @@ footer#colophon a.fa-linkedin:hover {
 .c-header-profile-avatar {
 	border-radius: 50px;
 	overflow: hidden;
+}
+
+.c-dropdown__content ul {
+	margin: 0px;
+	width: 300px;
+	max-width: 100%;
+	list-style: none;
+	padding: 20px 0px;
+	text-align: center;
+}
+
+.c-dropdown__content ul li {
+	width: 100%;
+	/* padding: 10px 5px; */
+	border-bottom: 1px solid #eee;
+}
+
+.c-dropdown__content ul li a {
+	color: #2c2c2c;
+	display: block;
+	font-size: 18px;
+	padding: 10px 5px;
+	text-decoration: none;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.c-dropdown__content ul li:hover a {
+	color: #fff;
+	background-color: #e95345;
+}
+
+.c-dropdown__content ul li:last-child {
+	border-bottom: none;
 }
 
 #dashboard .l-sidebar {
