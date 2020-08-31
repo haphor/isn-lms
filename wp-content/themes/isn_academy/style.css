@@ -1148,23 +1148,25 @@ span.um-active-color {
 
 /* Additional Buttons */
 .btn-blue:hover,
+.nxt-course:hover,
 .section-filters span:hover,
 #home-account .um-left input:hover,
 #home-account .um .um-button.um-alt {
-	color: #00a1d7;
-	background: #fff;
-	cursor: pointer;
+	color: #00a1d7 !important;
+	background: #fff !important;
+	cursor: pointer !important;
 	border: 2px solid #00a1d7 !important;
 }
 
 .btn-blue,
+.nxt-course,
 #home-account .um-left input,
 #home-account .um .um-button.um-alt:hover {
-	color: #fff;
-	cursor: pointer;
-	background: #00a1d7;
+	color: #fff !important;
+	cursor: pointer !important;
+	background: #00a1d7 !important;
 	border: 2px solid #00a1d7 !important;
-	box-shadow: none;
+	box-shadow: none !important;
 }
 
 #home-account .um-half {
@@ -1785,7 +1787,7 @@ footer#colophon a.fa-linkedin:hover {
 	right: 40px;
 	background-color: #fff;
 	overflow: hidden;
-	min-height: 100px;
+	min-height: 50px;
 	border: 1px solid #d0d0d0;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
@@ -2293,6 +2295,9 @@ ul.sub-courses li:hover span {
 	color: #fff;
 }
 
+#parent-courses div > img {
+	width: 100%;
+}
 
 /* Responsive Media Query */
 
