@@ -167,7 +167,7 @@ class CustomFieldController extends BaseController
                 </select>
             </p>
 
-            <?php if( $post->post_parent === 0 )  { ?>
+            <?php if( $post->post_parent !== 0 )  { ?>
                 <p>
                     <label for="youtube_fields[assessment]">Assessment</label>
                     <br>
