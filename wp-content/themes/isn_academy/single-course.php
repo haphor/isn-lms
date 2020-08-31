@@ -49,7 +49,6 @@ if(  $media &&  $meta['type'] !== 'video' ) {
                         <h4>
                             <?php the_title() ?>
                         </h4>
-                        <?php echo do_shortcode('[course-navigation]'); ?>
                     </div>
                     <div class="single-progress">
                         <?php //echo do_shortcode('[progress-bar]' ); ?>
@@ -84,6 +83,10 @@ if(  $media &&  $meta['type'] !== 'video' ) {
                             ?>
                         <?php endif; ?>
                     </ul>
+
+                    <div class="course-action col-12 d-flex flex-row justify-content-between align-items-center mt-4 p-0">
+                        <?php echo do_shortcode('[course-navigation]'); ?>
+                    </div>
                 </div>
             </section>
 

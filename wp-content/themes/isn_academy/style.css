@@ -1149,8 +1149,10 @@ span.um-active-color {
 /* Additional Buttons */
 .btn-blue:hover,
 .nxt-course:hover,
+.course-action > a,
 .section-filters span:hover,
 #home-account .um-left input:hover,
+.navigation > div.alignleft a:hover,
 #home-account .um .um-button.um-alt {
 	color: #00a1d7 !important;
 	background: #fff !important;
@@ -1160,7 +1162,9 @@ span.um-active-color {
 
 .btn-blue,
 .nxt-course,
+.course-action > a:hover,
 #home-account .um-left input,
+.navigation > div.alignleft a,
 #home-account .um .um-button.um-alt:hover {
 	color: #fff !important;
 	cursor: pointer !important;
@@ -2297,6 +2301,18 @@ ul.sub-courses li:hover span {
 
 #parent-courses div > img {
 	width: 100%;
+}
+
+.navigation > div,
+.course-action > a {
+	margin: 0px;
+	font-size: 19px;
+}
+.course-action > a,
+.navigation > div a {
+	border-radius: 3px;
+	text-decoration: none;
+	padding: 0.6em 1em 0.4em;
 }
 
 /* Responsive Media Query */
