@@ -1785,7 +1785,7 @@ footer#colophon a.fa-linkedin:hover {
 	right: 40px;
 	background-color: #fff;
 	overflow: hidden;
-	/* min-height: 300px; */
+	min-height: 100px;
 	border: 1px solid #d0d0d0;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
