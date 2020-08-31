@@ -101,7 +101,6 @@ class CertificateController extends BaseController
         global $post;
 
         if( empty($prevID) && empty($nextID) ){
-
             return $this->generateCertificate();
 
         }
@@ -118,9 +117,8 @@ class CertificateController extends BaseController
             $html .= '</div><!-- .navigation -->';
 
             echo $html;
-
-            return $this->generateCertificate();
-
+            Assessment::assessmentLink();
+            return '';
         }
 
         if( !empty($prevID) ) {
@@ -228,7 +226,6 @@ class CertificateController extends BaseController
             $ancestors=get_post_ancestors($post->ID);
             $root=count($ancestors)-1;
             $parent = $ancestors[$root];
-            // echo $parent;
         } else {
 
             $parent = $post->ID;
@@ -257,11 +254,8 @@ class CertificateController extends BaseController
         }
 
         $numberOfModules = count( $children_posts ) + 1;
-        // var_dump($children_posts);
         $percentagePerComplete = 100 / ($numberOfModules);
-
         $currentProgress = $percentagePerComplete * ($counter + 1);
-
         $this->level = $currentProgress;
 
     }
@@ -271,9 +265,9 @@ class CertificateController extends BaseController
 
         global $post;
 
-        $name = "";
+        $name = '';
 
-        $output_url = "";
+        $output_url = '';
 
         $currentUser = wp_get_current_user();
 
@@ -300,7 +294,7 @@ class CertificateController extends BaseController
             }
 
             //designed certificate picture
-            $image = dirname(__FILE__). "/certi.png";
+            $image = dirname(__FILE__). '/certi.png';
 
             $createimage = imagecreatefrompng($image);
 
@@ -319,7 +313,7 @@ class CertificateController extends BaseController
             $origin1_x = 120;
             $origin1_y=90;
 
-            //we then set the differnet size range based on the lenght of the text which we have declared when we called values from the form
+            //we then set the different size range based on the length of the text which we have declared when we called values from the form
             if($name_len<=7){
                 $font_size = 25;
                 $origin_x = 190;
@@ -343,15 +337,13 @@ class CertificateController extends BaseController
                 $font_size =10;
             }
 
-            // if (isset($_POST['generate'])) {
-
             $certificate_text = $name;
 
             //font directory for name
-            $drFont = dirname(__FILE__)."/developer.ttf";
+            $drFont = dirname(__FILE__). '/developer.ttf';
 
             // font directory for occupation name
-            $drFont1 = dirname(__FILE__)."/Gotham-black.otf";
+            $drFont1 = dirname(__FILE__). '/Gotham-black.otf';
 
             //function to display name on certificate picture
             $text1 = imagettftext($createimage, $font_size, $rotation, $origin_x, $origin_y, $black, $drFont, $certificate_text);
@@ -360,7 +352,7 @@ class CertificateController extends BaseController
             $text2 = imagettftext($createimage, $font_size_occupation, $rotation, $origin1_x+2, $origin1_y, $black, $drFont1, $occupation);
 
             //this is going to be created once the generate button is clicked dirname( __FILE__, 3 ).'/assets/'
-            $output =  $this->plugin_path.'certificates/'.strtolower($currentUser->user_firstname)."certificate.png";
+            $output =  $this->plugin_path.'certificates/'.strtolower($currentUser->user_firstname). 'certificate.png';
 
             imagepng($createimage, $output , -1);
 
@@ -368,14 +360,13 @@ class CertificateController extends BaseController
 
             $resolving_url = $this->plugin_url;
 
-            $output_path = $this->plugin_path.'certificates/'.strtolower($currentUser->user_firstname)."certificate.png";
+            $output_path = $this->plugin_path.'certificates/'.strtolower($currentUser->user_firstname). 'certificate.png';
 
             $output_url = str_replace( $troublesome_path, $resolving_url, $output );
 
-            // }
 
 
-            echo '<a href="#" class="btn btn-primary nxt-course getCertificate" id="'.$the_id.'">Get Certificate</a>';
+            echo '<a href="#" class="btn btn-primary nxt-course getCertificate" id="'.$the_id.'">Get Certificates</a>';
             // <form method="post" action=""></form>
 
             echo  '<div class="certificate-modal" id="certifiedModal">
@@ -459,7 +450,7 @@ class CertificateController extends BaseController
 
                 $percentagePerComplete = 100 / $numberOfChildren;
 
-                $key = array_search($post_id, array_column($children, 'ID'));
+                $key = array_search( $post_id, array_column( $children, 'ID' ), true );
 
                 echo '<div class="isn-progress"><span class="isn-percent" style="width:'.$countlevel.'%"></span></div><strong>'.$countlevel.'%</strong>';
 
