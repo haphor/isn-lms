@@ -24,13 +24,13 @@ class CourseController extends BaseController
     {
         add_filter( 'wp', [ $this, 'guest_redirect' ], 0 );
         add_action( 'init', [ $this, 'activate_post_type' ] );
-        add_action( 'login_init', [ $this, 'actionLoginInit' ], -2 );
+        /*add_action( 'login_init', [ $this, 'actionLoginInit' ], -2 );
         add_action( 'login_form_login', [ $this, 'actionBeforeLoginPage' ] );
         add_action( 'before_login_page', [ $this, 'actionBeforeLoginPage' ] );
         add_filter( 'login_url', [ $this, 'filterLoginUrl' ], 10, 3 );
         add_filter( 'login_redirect', [ $this, 'filterLoginRedirect' ], 10, 3 );
         add_action( 'authenticate', [ $this, 'loginFormProcessing' ], 101, 3 );
-        add_shortcode( 'isn-custom-login-form', [ $this, 'renderLoginForm' ] );
+        add_shortcode( 'isn-custom-login-form', [ $this, 'renderLoginForm' ] );*/
         add_action( 'wp_logout', [ $this, 'redirectAfterLogin' ] );
     }
 
