@@ -15,29 +15,31 @@ $courses = new WP_Query( $args );
 
 <section id="dashboard-content">
     <?php get_template_part( 'templates/parts/sidebar', 'menu' ); ?>
-    <main class="l-main">
+    <main class="l-main parent-course-page">
         <div class="content-wrapper content-wrapper--with-bg">
-            <section id="popular-courses" class="section-padding">
-                <div class="section-header">
+            <section id="parent-courses" class="section-padding d-flex flex-row">
+                <div class="col-7">
                     <?php the_post_thumbnail( 'full' ) ?>
                 </div>
-                <div class="right">
-                    <?php the_title() ?>
+                <div class="col-5 right">
+                    <h4> <?php the_title() ?> </h4>
                     <h5>Modules</h5>
                     <?php
                         $childArgs = array(
                             'post_type' => 'course',
                             'order' => 'ASC',
                             'post_parent' => $post->ID
-                        );
+                        ); ?>
 
-                        $children_posts = get_children($childArgs);
+                        <ul class="sub-courses d-flex flex-column flex-wrap" style="list-style: none;">
 
-                        foreach ($children_posts as $children_post) {
-                            echo '<li><a href="'.get_the_permalink($children_post).'"> ' . $children_post->post_title.'</a></li>';
-                        }
-                    wp_reset_postdata();
-                    ?>
+                            <?php $children_posts = get_children($childArgs);
+
+                            foreach ($children_posts as $children_post) {
+                                echo '<li><a href="'.get_the_permalink($children_post).'"> ' . $children_post->post_title.'</a></li>';
+                            } ?>
+                        </ul>
+                    <?php wp_reset_postdata(); ?>
                 </div>
             </section>
             <section id="popular-courses" class="section-padding">

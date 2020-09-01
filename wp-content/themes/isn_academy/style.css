@@ -548,10 +548,6 @@ a {
 	color: #4169e1;
 }
 
-a:visited {
-	color: #800080;
-}
-
 a:hover,
 a:focus,
 a:active {
@@ -1152,23 +1148,29 @@ span.um-active-color {
 
 /* Additional Buttons */
 .btn-blue:hover,
+.nxt-course:hover,
+.course-action > a,
 .section-filters span:hover,
 #home-account .um-left input:hover,
+.navigation > div.alignleft a:hover,
 #home-account .um .um-button.um-alt {
-	color: #00a1d7;
-	background: #fff;
-	cursor: pointer;
+	color: #00a1d7 !important;
+	background: #fff !important;
+	cursor: pointer !important;
 	border: 2px solid #00a1d7 !important;
 }
 
 .btn-blue,
+.nxt-course,
+.course-action > a:hover,
 #home-account .um-left input,
+.navigation > div.alignleft a,
 #home-account .um .um-button.um-alt:hover {
-	color: #fff;
-	cursor: pointer;
-	background: #00a1d7;
+	color: #fff !important;
+	cursor: pointer !important;
+	background: #00a1d7 !important;
 	border: 2px solid #00a1d7 !important;
-	box-shadow: none;
+	box-shadow: none !important;
 }
 
 #home-account .um-half {
@@ -1789,7 +1791,7 @@ footer#colophon a.fa-linkedin:hover {
 	right: 40px;
 	background-color: #fff;
 	overflow: hidden;
-	min-height: 300px;
+	min-height: 50px;
 	border: 1px solid #d0d0d0;
 	-webkit-border-radius: 10px;
 	border-radius: 10px;
@@ -1818,6 +1820,43 @@ footer#colophon a.fa-linkedin:hover {
 .c-header-profile-avatar {
 	border-radius: 50px;
 	overflow: hidden;
+}
+
+.c-dropdown__content ul {
+	margin: 0px;
+	width: 300px;
+	max-width: 100%;
+	list-style: none;
+	padding: 20px 0px;
+	text-align: center;
+}
+
+.c-dropdown__content ul li {
+	width: 100%;
+	/* padding: 10px 5px; */
+	border-bottom: 1px solid #eee;
+}
+
+.c-dropdown__content ul li a {
+	color: #2c2c2c;
+	display: block;
+	font-size: 18px;
+	padding: 10px 5px;
+	text-decoration: none;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+
+.c-dropdown__content ul li:hover a {
+	color: #fff;
+	background-color: #e95345;
+}
+
+.c-dropdown__content ul li:last-child {
+	border-bottom: none;
 }
 
 #dashboard .l-sidebar {
@@ -2260,6 +2299,21 @@ ul.sub-courses li:hover span {
 	color: #fff;
 }
 
+#parent-courses div > img {
+	width: 100%;
+}
+
+.navigation > div,
+.course-action > a {
+	margin: 0px;
+	font-size: 19px;
+}
+.course-action > a,
+.navigation > div a {
+	border-radius: 3px;
+	text-decoration: none;
+	padding: 0.6em 1em 0.4em;
+}
 
 /* Responsive Media Query */
 
