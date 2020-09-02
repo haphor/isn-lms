@@ -71,8 +71,10 @@ $query = new WP_Query( $args );
 							<h4>Plating Advancements for Fracture Fixation with Michael P. Kowaleski DVM, DACVS, DECVS</h4>
 							<span class="learning-info">47mins 32 secs</span>
 						</div>
-						<div class="learning-list-image hover-zoomin">
-							<img src="<?= bloginfo('template_url');?>/images/learning-video.jpg" alt="Learning Featured Image" />
+						<div class="learning-list-image">
+							<div class="hover-zoomin">
+								<img src="<?= bloginfo('template_url');?>/images/learning-video.jpg" alt="Learning Featured Image" />
+							</div>
 							<span class="learning-action"><i class="fa fa-play" aria-hidden="true"></i></span>
 						</div>
 					</article>
