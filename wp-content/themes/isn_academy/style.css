@@ -1861,7 +1861,8 @@ footer#colophon a.fa-linkedin:hover {
 
 #dashboard .l-sidebar {
 	width: 70px;
-	position: absolute;
+	/* position: absolute; */
+	position: fixed;
 	z-index: 10;
 	left: 0;
 	top: 0;
