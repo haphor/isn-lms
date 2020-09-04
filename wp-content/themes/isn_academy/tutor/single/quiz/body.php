@@ -448,7 +448,7 @@ $attempt_remaining = $attempts_allowed - $attempted_count;
 	}
 
 
-	tutor_next_previous_pagination();
+	//tutor_next_previous_pagination();
 
     do_action('tutor_quiz/body/after', $quiz_id);
 	?>

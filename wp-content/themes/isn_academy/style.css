@@ -2393,6 +2393,10 @@ ul.sub-courses li:hover span {
 	background: #00a2d7;
 	border-color: #00a2d7;
 }
+.flex-reverse{
+	flex-direction: row-reverse;
+	display: flex;
+}
 /* Responsive Media Query */
 
 /* lg */

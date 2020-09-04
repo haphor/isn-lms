@@ -47,10 +47,16 @@ $enable_q_and_a_on_course = tutor_utils()->get_option('enable_q_and_a_on_course'
                     the_title();
                     ?>
                 </h3>
+                <?php
+                    if ( have_posts() ) :
+                        while ( have_posts() ) : the_post();
+                        the_content();
+                        endwhile;
+                    endif;
+                ?>
 
 
 				<?php
-                the_content();
                 $topics = tutor_utils()->get_topics($course_id);
 				if ($topics->have_posts()){
 					while ($topics->have_posts()){ $topics->the_post();
