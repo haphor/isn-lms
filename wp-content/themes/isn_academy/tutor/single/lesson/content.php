@@ -31,16 +31,8 @@ if ($best_watch_time > 0){
 
 <div class="tutor-single-page-top-bar">
     <div class="tutor-topbar-item tutor-hide-sidebar-bar">
-        <a href="javascript:;" class="tutor-lesson-sidebar-hide-bar"><i class="tutor-icon-angle-left"></i> </a>
+        <a href="javascript:;" class="tutor-lesson-sidebar-hide-bar"><i class="tutor-icon-angle-right"></i> </a>
         <?php $course_id = get_post_meta(get_the_ID(), '_tutor_course_id_for_lesson', true); ?>
-        <a href="<?php echo get_the_permalink($course_id); ?>" class="tutor-topbar-home-btn">
-            <i class="tutor-icon-home"></i> <?php echo __('Go to Course Home', 'tutor') ; ?>
-        </a>
-    </div>
-    <div class="tutor-topbar-item tutor-topbar-content-title-wrap">
-        <?php
-        tutor_utils()->get_lesson_type_icon(get_the_ID(), true, true);
-        the_title(); ?>
     </div>
 
     <div class="tutor-topbar-item tutor-topbar-mark-to-done">
@@ -54,9 +46,7 @@ if ($best_watch_time > 0){
 
     <input type="hidden" id="tutor_video_tracking_information" value="<?php echo esc_attr(json_encode($jsonData)); ?>">
 	<?php tutor_lesson_video(); ?>
-	<?php the_content(); ?>
 	<?php get_tutor_posts_attachments(); ?>
-	<?php tutor_next_previous_pagination(); ?>
 </div>
 
 <?php do_action('tutor_lesson/single/after/content'); ?>

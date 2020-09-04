@@ -36,18 +36,22 @@ $enable_q_and_a_on_course = tutor_utils()->get_option('enable_q_and_a_on_course'
 <?php do_action('tutor_lesson/single/before/lesson_sidebar'); ?>
 
     <div class="tutor-sidebar-tabs-wrap">
-        <div class="tutor-tabs-btn-group">
-            <a href="#tutor-lesson-sidebar-tab-content" class="<?php echo $enable_q_and_a_on_course ? "active" : ""; ?>"> <i class="tutor-icon-education"></i> <span> <?php esc_html_e('Lesson List', 'tutor'); ?></span></a>
-			<?php if($enable_q_and_a_on_course) { ?>
-                <a href="#tutor-lesson-sidebar-qa-tab-content"> <i class="tutor-icon-question-1"></i> <span><?php esc_html_e('Browse Q&A', 'tutor'); ?></span></a>
-			<?php } ?>
-        </div>
+
 
         <div class="tutor-sidebar-tabs-content">
 
             <div id="tutor-lesson-sidebar-tab-content" class="tutor-lesson-sidebar-tab-item">
+                <h3 class="single-lesson-title">
+                    <?php
+                    tutor_utils()->get_lesson_type_icon(get_the_ID(), true, true);
+                    the_title();
+                    ?>
+                </h3>
+
+
 				<?php
-				$topics = tutor_utils()->get_topics($course_id);
+                the_content();
+                $topics = tutor_utils()->get_topics($course_id);
 				if ($topics->have_posts()){
 					while ($topics->have_posts()){ $topics->the_post();
 						$topic_id = get_the_ID();
@@ -55,29 +59,8 @@ $enable_q_and_a_on_course = tutor_utils()->get_option('enable_q_and_a_on_course'
 						?>
 
                         <div class="tutor-topics-in-single-lesson tutor-topics-<?php echo $topic_id; ?>">
-                            <div class="tutor-topics-title <?php echo $topic_summery ? 'has-summery' : ''; ?>">
-                                <h3>
-									<?php
-									the_title();
-									if($topic_summery) {
-										echo "<span class='toogle-informaiton-icon'>&quest;</span>";
-									}
-									?>
-                                </h3>
-                                <button class="tutor-single-lesson-topic-toggle"><i class="tutor-icon-plus"></i></button>
-                            </div>
 
-							<?php
-							if ($topic_summery){
-								?>
-                                <div class="tutor-topics-summery">
-									<?php echo $topic_summery; ?>
-                                </div>
-								<?php
-							}
-							?>
-
-                            <div class="tutor-lessons-under-topic" style="display: none">
+                            <ul class="tutor-lessons-under-topic sub-courses d-flex flex-column flex-wrap">
 								<?php
 								do_action('tutor/lesson_list/before/topic', $topic_id);
 
@@ -89,9 +72,8 @@ $enable_q_and_a_on_course = tutor_utils()->get_option('enable_q_and_a_on_course'
 										if ($post->post_type === 'tutor_quiz') {
 											$quiz = $post;
 											?>
-                                            <div class="tutor-single-lesson-items quiz-single-item quiz-single-item-<?php echo $quiz->ID; ?> <?php echo ( $currentPost->ID === get_the_ID() ) ? 'active' : ''; ?>" data-quiz-id="<?php echo $quiz->ID; ?>">
+                                            <li class="d-flex flex-row justify-content-between quiz-single-item-<?php echo $quiz->ID; ?> <?php echo ( $currentPost->ID === get_the_ID() ) ? 'active' : ''; ?>" data-quiz-id="<?php echo $quiz->ID; ?>">
                                                 <a href="<?php echo get_permalink($quiz->ID); ?>" class="sidebar-single-quiz-a" data-quiz-id="<?php echo $quiz->ID; ?>">
-                                                    <i class="tutor-icon-doubt"></i>
                                                     <span class="lesson_title"><?php echo $quiz->post_title; ?></span>
                                                     <span class="tutor-lesson-right-icons">
                                                     <?php
@@ -105,7 +87,7 @@ $enable_q_and_a_on_course = tutor_utils()->get_option('enable_q_and_a_on_course'
                                                     ?>
                                                     </span>
                                                 </a>
-                                            </div>
+                                            </li>
 											<?php
 										}elseif($post->post_type === 'tutor_assignments'){
 											/**
@@ -141,13 +123,8 @@ $enable_q_and_a_on_course = tutor_utils()->get_option('enable_q_and_a_on_course'
 											$is_completed_lesson = tutor_utils()->is_completed_lesson();
 											?>
 
-                                            <div class="tutor-single-lesson-items <?php echo ( $currentPost->ID === get_the_ID() ) ? 'active' : ''; ?>">
+                                            <li class="d-flex flex-row justify-content-between <?php echo ( $currentPost->ID === get_the_ID() ) ? 'active' : ''; ?>">
                                                 <a href="<?php the_permalink(); ?>" class="tutor-single-lesson-a" data-lesson-id="<?php the_ID(); ?>">
-
-													<?php
-													$tutor_lesson_type_icon = $play_time ? 'youtube' : 'document';
-													echo "<i class='tutor-icon-$tutor_lesson_type_icon'></i>";
-													?>
                                                     <span class="lesson_title"><?php the_title(); ?></span>
                                                     <span class="tutor-lesson-right-icons">
                                                         <?php
@@ -160,7 +137,7 @@ $enable_q_and_a_on_course = tutor_utils()->get_option('enable_q_and_a_on_course'
                                                         ?>
                                                     </span>
                                                 </a>
-                                            </div>
+                                            </li>
 
 											<?php
 										}
@@ -170,7 +147,7 @@ $enable_q_and_a_on_course = tutor_utils()->get_option('enable_q_and_a_on_course'
 								?>
 
 								<?php do_action('tutor/lesson_list/after/topic', $topic_id); ?>
-                            </div>
+                            </ul>
                         </div>
 
 						<?php
@@ -189,6 +166,7 @@ $enable_q_and_a_on_course = tutor_utils()->get_option('enable_q_and_a_on_course'
 
         </div>
 
+        <?php tutor_next_previous_pagination(); ?>
     </div>
 
 <?php do_action('tutor_lesson/single/after/lesson_sidebar'); ?>
