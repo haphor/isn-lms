@@ -4,10 +4,10 @@
         <p>Pick up where you left off:</p>
     </div>
     <div class="d-flex flex-row">
-        <div class="col-12 col-sm-6 section-img hover-zoomin">
+        <div class="col-12 col-sm-6 section-img hover-zoomin pr-sm-0">
             <img src="<?= bloginfo('template_url');?>/images/dashboard-banner.jpg" alt="Dashboard Banner" />
         </div>
-        <div class="d-flex align-items-center pl-3 last-section-content">
+        <div class="d-flex align-items-center pl-3 last-section-content" style="background-color: #fff;">
             <div class="d-flex flex-column">
                 <h4>Introduction to Clinical Laboratory Science</h4>
                 <p>
