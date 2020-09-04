@@ -53,7 +53,7 @@ $auth_url = $is_tutor_login_disabled ? wp_login_url($_SERVER['REQUEST_SCHEME'].'
 
 			<div class=" tutor-course-enroll-wrap">
 				<button type="submit" class="tutor-btn-enroll tutor-btn tutor-course-purchase-btn">
-					<?php _e('Watch now', 'tutor'); ?>
+					<?php _e('Start now', 'tutor'); ?>
 				</button>
 			</div>
 		</form>
