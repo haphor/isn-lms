@@ -2408,6 +2408,9 @@ ul.sub-courses li:hover span {
 .tutor-course-filter-wrap{
 	display: none;
 }
+.tutor-single-course-meta.tutor-lead-meta{
+	display: none;
+}
 /* Responsive Media Query */
 
 /* lg */
