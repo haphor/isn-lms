@@ -2316,6 +2316,13 @@ ul.sub-courses li:hover span {
 	padding: 0.6em 1em 0.4em;
 }
 
+.home #quick-learning #dashboard {
+	overflow: visible;
+}
+.home #quick-learning #dashboard .has-dropdown{
+	position: relative;
+}
+
 /* Responsive Media Query */
 
 /* lg */
