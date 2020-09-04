@@ -1,0 +1,69 @@
+/*--------------The Nav-menu----------------*/
+div#page.sidebar-header {
+    max-width: 100%;
+}
+#dashboard .sidebar-is-expanded .l-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.sidebar-header .tutor-wrap {
+    width: calc(100% - 220px);
+    margin-right: 0;
+    margin-left: auto;
+    padding-top: 100px;
+    padding-right: 20px;
+}
+#dashboard .sidebar-header main.l-main {
+    width: calc(100% - 220px);
+    margin-right: 0;
+    margin-left: auto;
+    height: 100%;
+    padding: 70px 0 0 0 !important;
+}
+a.link-to-course {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: #121212;
+    text-decoration: none;
+    outline: none;
+}
+nav.c-menu.js-menu {
+    padding-top: 70px;
+}
+
+#dashboard .u-list ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.c-menu__item__inner {
+    display: flex;
+    padding: 10px;
+}
+.c-menu__item__inner i {
+    width: 16px;
+    margin-right: 15px;
+    display: inline-block;
+}
+.c-menu-item__title span {
+    font-size: 14px;
+}
+
+
+h1.tutor-course-header-h1 {
+    color: #17468B;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: 'Maison Neue';
+    line-height: 30px;
+    margin: 0 0 10px;
+}
+.tutor-course-summery {
+    color: #2B2D42;
+    font-size: 18px;
+    font-family: 'Maison Neue';
+    line-height: 22px;
+    margin-bottom: 20px;
+}

@@ -15,7 +15,7 @@
 get_header();
 
 $args = [
-  'post_type' => 'course',
+  'post_type' => 'courses',
   'posts_per_page' => 3,
   'post_parent' => 0,
   'post_status' => 'publish',
@@ -117,7 +117,7 @@ $query = new WP_Query( $args );
 
 				<div class="section-header d-md-flex flex-wrap justify-content-between align-items-center">
 					<h3>Popular Courses</h3>
-					<a href="<?php echo home_url(); ?>/course" class="btn btn-blue">View All</a>
+					<a href="<?php echo home_url(); ?>/courses" class="btn btn-blue">View All</a>
 				</div>
 
 				<div class="section-body learning-list d-flex flex-wrap justify-content-between">
@@ -131,30 +131,27 @@ $query = new WP_Query( $args );
                                 <h4><a href="<?php the_permalink();?>"><?php the_title() ?></a></h4>
                                 <div class="course-info d-flex flex-nowrap justify-content-between">
                                     <?php
-                                        $totalCourse = get_children( ['num_of_posts' => -1, 'post_parent' => get_the_ID() ], ARRAY_A );
-                                        $total = count($totalCourse) + 1;
-                                        $meta = get_post_meta( get_the_ID(), 'youtube_fields', true);
+                                        $course_duration = get_tutor_course_duration_context();
+                                        $total_lesson = tutor_utils()->get_lesson_count_by_course( get_the_ID() );
                                     ?>
-                                    <?php if( $meta['certificate'] ) : ?>
+
                                     <div class="d-flex flex-column align-items-center">
                                         <img src="<?= bloginfo('template_url');?>/images/cert.svg" alt="Course Certificate Icon" />
                                         <span class="course-des">Course Certificate</span>
                                     </div>
-                                    <?php endif;?>
-                                    <div class="d-flex flex-column align-items-center">
-                                        <img src="<?= bloginfo('template_url');?>/images/login.svg" alt="Login Required Icon" />
-                                        <span class="course-des">Login Required</span>
-                                    </div>
 
                                     <div class="d-flex flex-column align-items-center">
-                                        <img src="<?= bloginfo('template_url');?>/images/lesson.svg" alt="24 Lessons Icon" />
-                                        <span class="course-des"><?= $total ?><br> Lessons</span>
+                                        <img src="<?php bloginfo( 'template_url' ) ?>/images/lesson.svg" alt="24 Lessons Icon" />
+                                        <span class="course-des"><?php echo $total_lesson ?> Lessons</span>
                                     </div>
 
-                                    <div class="d-flex flex-column align-items-center">
-                                        <img src="<?= bloginfo('template_url');?>/images/time.svg" alt="5hrs 30mins Icon" />
-                                        <span class="course-des"><?= $meta['length']?></span>
-                                    </div>
+                                    <?php
+                                    if(!empty($course_duration)) { ?>
+                                        <div class="d-flex flex-column align-items-center">
+                                            <img src="<?php bloginfo( 'template_url' ) ?>/images/time.svg" alt="5hrs 30mins Icon" />
+                                            <span class="course-des"><?php echo $course_duration?></span>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </article>
