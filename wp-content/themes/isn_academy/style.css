@@ -2397,6 +2397,16 @@ ul.sub-courses li:hover span {
 	flex-direction: row-reverse;
 	display: flex;
 }
+.tutor-course-loop-title h2 a{
+	font-weight: 500;
+	color:#121212;
+}
+.tutor-course-loop-title h2 a:hover {
+	color: #0d1733;
+}
+.tutor-course-filter-wrap{
+	display: none;
+}
 /* Responsive Media Query */
 
 /* lg */

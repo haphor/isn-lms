@@ -44,7 +44,7 @@ do_action('tutor_course/loop/after_excerpt');
 do_action('tutor_course/loop/end_content_wrap');
 
 do_action('tutor_course/loop/before_footer');
-do_action('tutor_course/loop/footer');
+//do_action('tutor_course/loop/footer');
 do_action('tutor_course/loop/after_footer');
 
 do_action('tutor_course/loop/after_content');
