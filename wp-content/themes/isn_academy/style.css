@@ -2242,10 +2242,17 @@ h3.section-heading {
 
 
 /* Single Course Page */
-#dashboard .single-course-page #last-section h4 {
+#dashboard .single-course-page #last-section h4,
+.tutor-course-header-h1{
 	color: #17468B;
 	font-size: 18px;
+	text-transform: uppercase;
 	margin-bottom: 15px;
+}
+.tutor-course-summery{
+	margin-bottom: 10px;
+	color: #2B2D42;
+	font-size: 15px;
 }
 #dashboard .single-course-page #last-section p {
 	color: #2B2D42;
@@ -2257,16 +2264,16 @@ ul.sub-courses {
 }
 ul.sub-courses li {
 	font-size: 16px;
-	padding: 5px 10px 5px 20px;
+	padding: 5px 10px 5px 25px;
 	border-radius: 5px;
 	position: relative;
 }
 ul.sub-courses li:before {
 	content: '';
-	top: 10px;
-	left: 3px;
-	width: 10px;
-	height: 10px;
+	top: 38%;
+	left: 8px;
+	width: 8px;
+	height: 8px;
 	position: absolute;
 	border-radius: 50px;
 	background-color: #888;
@@ -2279,15 +2286,24 @@ ul.sub-courses li b {
 	margin-top: -6.5%;
 	margin-right: 10px;
 }
+ul.sub-courses li a{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
 ul.sub-courses li a,
 ul.sub-courses li span {
 	color: #888;
 	font-size: 16px;
 	text-decoration: none;
-	padding: 6px 3px 6px 15px;
+	padding: 0 0 0 10px;
 }
-ul.sub-courses li span{
-	text-transform: uppercase;
+ul.sub-courses li a span{
+	font-size: 14px;
+}
+ul.sub-courses li a span i{
+	margin-right: 7px;
 }
 ul.sub-courses li:hover {
 	color: #fff;
@@ -2315,6 +2331,23 @@ ul.sub-courses li:hover span {
 	padding: 0.6em 1em 0.4em;
 }
 
+/* Custom styling */
+.tutor-single-course-segment,
+.tutor-course-topics-header{
+	margin-bottom: 0;
+}
+.tutor-topics-in-single-lesson{
+	background: transparent;
+}
+.tutor-course-topics-contents .tutor-course-topic,
+.tutor-course-lesson,
+.tutor-price-preview-box{
+	border:0;
+}
+.tutor-course-topics-contents .tutor-course-title,
+.d-none{
+	display: none;
+}
 /* Responsive Media Query */
 
 /* lg */
