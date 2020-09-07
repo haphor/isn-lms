@@ -48,30 +48,11 @@ $query = new WP_Query( $args );
 			<section id="quick-learning" class="section-padding">
 				<div class="section-header d-md-flex flex-wrap justify-content-between align-items-center">
 					<h3>Quick Learnings</h3>
-					<div id="dashboard" class="section-filters d-flex justify-content-between">
-						<span class="d-flex flex-nowrap justify-content-between align-items-center has-dropdown mr-3"> 
-							<b class="mr-3">All Learnings</b> 
-							<i class="fa fa-angle-down"></i>
-							<div class="c-dropdown d-flex flex-column align-items-center">
-								<div class="c-dropdown__content d-flex flex-column align-items-center">
-									<ul>
-										<li> <a href="#">Chronic Care</a> </li>
-									</ul>
-								</div>
-							</div>
-						</span>
-						<span class="d-flex flex-nowrap justify-content-between align-items-center has-dropdown"> 
-							<b class="mr-3">All Specialities</b> 
-							<i class="fa fa-angle-down"></i>
-							<div class="c-dropdown d-flex flex-column align-items-center">
-								<div class="c-dropdown__content d-flex flex-column align-items-center">
-									<ul>
-										<li> <a href="#">Chronic Care</a> </li>
-									</ul>
-								</div>
-							</div>
-						</span>
+					<div class="section-filters d-flex justify-content-between">
+						<span class="d-flex flex-nowrap justify-content-between align-items-center mr-3"> <b class="mr-3">All Learnings</b> <i class="fa fa-chevron-down" aria-hidden="true"></i> </span>
+						<span class="d-flex flex-nowrap justify-content-between align-items-center"> <b class="mr-3">All Specialities</b> <i class="fa fa-chevron-down" aria-hidden="true"></i> </span>
 					</div>
+				</div>
 				<div class="section-body learning-list d-flex flex-wrap justify-content-between">
 					
 					<article class="learning-list-item d-flex flex-column learning-pdf mb-4">

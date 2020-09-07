@@ -118,6 +118,19 @@ if ( ! function_exists( 'isn_academy_setup' ) ) :
 endif;
 add_action( 'after_setup_theme', 'isn_academy_setup' );
 
+
+// Custom Search For Courses
+function template_chooser($template) {    
+	global $wp_query;   
+	$post_type = get_query_var('post_type');   
+	if( $wp_query->is_search && $post_type == 'courses' ) {
+		return locate_template('archive-search.php');  //  redirect to archive-search.php
+	}   
+	return $template;   
+}
+add_filter('template_include', 'template_chooser'); 
+
+
 /**
  * Set the content width in pixels, based on the theme's design and stylesheet.
  *
