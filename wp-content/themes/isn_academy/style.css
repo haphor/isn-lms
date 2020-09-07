@@ -2411,6 +2411,13 @@ ul.sub-courses li:hover span {
 .tutor-single-course-meta.tutor-lead-meta{
 	display: none;
 }
+.home #quick-learning #dashboard {
+	overflow: visible;
+}
+.home #quick-learning #dashboard .has-dropdown{
+	position: relative;
+}
+
 /* Responsive Media Query */
 
 /* lg */
