@@ -29,10 +29,6 @@
   $( "#menu-footer-extras" ).addClass( "menu d-flex flex-row flex-wrap" );
   $( "#dashboard-menu li" ).addClass( "c-menu__item has-submenu" );
 
-  $(".home #quick-learning #dashboard .has-dropdown").click(function () {
-   $(this).find(".c-dropdown").toggleClass("c-dropdown-show");
-  });
-
  });
 
 }( jQuery ) );

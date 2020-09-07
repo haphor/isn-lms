@@ -16,36 +16,34 @@ get_header( 'dashboard' );
 ?>
  <section id="dashboard-content">
     <?php get_template_part( 'templates/parts/sidebar', 'menu' ); ?>
-  <main class="l-main">
-   <div class="content-wrapper content-wrapper--with-bg">
+    <main class="l-main">
+        <div class="content-wrapper content-wrapper--with-bg">
+            <?php
+            $args = [
+                'post_type' => 'course',
+                'post_status' => 'publish',
+                'orderby' => 'rand',
+                'posts_per_page' => 6,
+                'post_parent' => 0,
+            ];
+            $loop = new WP_Query( $args );
+            set_query_var( 'accordion', $loop );
+            ?>
+            <?php if( ! is_user_logged_in() ) :
+                set_query_var( 'courses', $loop );
+                get_template_part( 'templates/parts/general', 'view' );
+            ?>
 
-<?php
-$args = [
-    'post_type' => 'course',
-    'post_status' => 'publish',
-    'orderby' => 'rand',
-    'posts_per_page' => 6,
-    'post_parent' => 0,
-];
-$loop = new WP_Query( $args );
-set_query_var( 'accordion', $loop );
-?>
-       <?php if( ! is_user_logged_in() ) :
-           set_query_var( 'courses', $loop );
-           get_template_part( 'templates/parts/general', 'view' );
-       ?>
+            <?php else :?>
 
+            <?php
+                get_template_part( 'templates/courses/currently', 'watching' );
 
-       <?php else :?>
-
-       <?php
-           get_template_part( 'templates/courses/currently', 'watching' );
-
-           get_template_part( 'templates/courses/ongoing', 'courses' );
-       ?>
-       <?php endif; ?>
-   </div>
-  </main>
+                get_template_part( 'templates/courses/ongoing', 'courses' );
+            ?>
+            <?php endif; ?>
+        </div>
+    </main>
  </section>
 
 

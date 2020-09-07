@@ -2347,13 +2347,6 @@ ul.sub-courses li:hover span {
 	padding: 0.2em 1em 0.2em;
 }
 
-.home #quick-learning #dashboard {
-	overflow: visible;
-}
-.home #quick-learning #dashboard .has-dropdown{
-	position: relative;
-}
-
 /* Custom styling */
 .tutor-single-page-top-bar a{
 	background-color: #00a2d7;
@@ -2418,7 +2411,6 @@ ul.sub-courses li:hover span {
 .tutor-single-course-meta.tutor-lead-meta{
 	display: none;
 }
-
 /* Responsive Media Query */
 
 /* lg */

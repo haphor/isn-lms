@@ -545,7 +545,7 @@ table {
 /* Links
 --------------------------------------------- */
 a {
-	color: #4169e1;
+	color: #fff;
 }
 
 a:hover,
@@ -1150,7 +1150,9 @@ span.um-active-color {
 .btn-blue:hover,
 .nxt-course:hover,
 .course-action > a,
+.tutor-button:hover,
 .section-filters span:hover,
+.tutor-button.tutor-success:hover,
 #home-account .um-left input:hover,
 .navigation > div.alignleft a:hover,
 #home-account .um .um-button.um-alt {
@@ -1162,7 +1164,9 @@ span.um-active-color {
 
 .btn-blue,
 .nxt-course,
+.tutor-button,
 .course-action > a:hover,
+.tutor-button.tutor-success,
 #home-account .um-left input,
 .navigation > div.alignleft a,
 #home-account .um .um-button.um-alt:hover {
@@ -2313,6 +2317,11 @@ ul.sub-courses li:hover span {
 	border-radius: 3px;
 	text-decoration: none;
 	padding: 0.6em 1em 0.4em;
+}
+
+.tutor-table tr th:last-of-type,
+.tutor-table tr td:last-of-type {
+	display: none;
 }
 
 /* Responsive Media Query */
