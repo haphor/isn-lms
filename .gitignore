@@ -3,3 +3,5 @@
 wp-config.php
 /wp-content/uploads
 /wp-content/debug.log
+/wp-content/themes/isn_academy/.style.css.swp
+/wp-content/themes/isn_academy/_.style.css.swp
