@@ -2429,7 +2429,22 @@ ul.sub-courses li:hover span {
 #searchform, #searchform > * {
 	width: 100%;
 }
-
+.complete--btn{
+	margin-top:20px;
+}
+.complete--btn button{
+	display: block;
+	width: 100%;
+	background: #0d1733;
+	color: #FFF;
+	border: 1px solid #0d1733;
+	padding: 17px 10px;
+	font-size: 16px;
+}
+.complete--btn button:hover{
+	background:#fff;
+	color:#0d1733;
+}
 /* Responsive Media Query */
 
 /* lg */

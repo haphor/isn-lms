@@ -49,9 +49,10 @@ global $wp_query;
             <?php }
         }
         ?>
-        <?php tutor_course_mark_complete_html(); ?>
-
         <?php do_action('tutor_course/single/actions_btn_group/after'); ?>
+    </div>
+    <div class="tutor-price-box-thumbnail complete--btn">
+        <?php tutor_course_mark_complete_html(); ?>
     </div>
 
 

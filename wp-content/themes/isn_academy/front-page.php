@@ -103,39 +103,40 @@ $query = new WP_Query( $args );
 
 				<div class="section-body learning-list d-flex flex-wrap justify-content-between">
                     <?php if ( $query->have_posts() ) : ?>
-                        <?php while ( $query->have_posts() ) : $query->the_post(); ?>
-                        <article class="learning-list-item d-flex flex-column mb-4">
-                            <div class="learning-list-image hover-zoomin">
-                                <?php the_post_thumbnail( 'medium' ) ?>
-                            </div>
-                            <div class="learning-list-content d-flex flex-column">
-                                <h4><a href="<?php the_permalink();?>"><?php the_title() ?></a></h4>
-                                <div class="course-info d-flex flex-nowrap justify-content-between">
-                                    <?php
-                                        $course_duration = get_tutor_course_duration_context();
-                                        $total_lesson = tutor_utils()->get_lesson_count_by_course( get_the_ID() );
-                                    ?>
-
-                                    <div class="d-flex flex-column align-items-center">
-                                        <img src="<?= bloginfo('template_url');?>/images/cert.svg" alt="Course Certificate Icon" />
-                                        <span class="course-des">Course Certificate</span>
+                        <?php while ( $query->have_posts() ) : $query->the_post();
+                            $course_duration = get_tutor_course_duration_context();
+                            $total_lesson = tutor_utils()->get_lesson_count_by_course( get_the_ID() );
+                            ?>
+                            <?php if( $total_lesson ) : ?>
+                                <article class="learning-list-item d-flex flex-column mb-4">
+                                    <div class="learning-list-image hover-zoomin">
+                                        <?php the_post_thumbnail( 'medium' ) ?>
                                     </div>
+                                    <div class="learning-list-content d-flex flex-column">
+                                        <h4><a href="<?php the_permalink();?>"><?php the_title() ?></a></h4>
+                                        <div class="course-info d-flex flex-nowrap justify-content-between">
 
-                                    <div class="d-flex flex-column align-items-center">
-                                        <img src="<?php bloginfo( 'template_url' ) ?>/images/lesson.svg" alt="24 Lessons Icon" />
-                                        <span class="course-des"><?php echo $total_lesson ?> Lessons</span>
-                                    </div>
+                                            <div class="d-flex flex-column align-items-center">
+                                                <img src="<?= bloginfo('template_url');?>/images/cert.svg" alt="Course Certificate Icon" />
+                                                <span class="course-des">Course Certificate</span>
+                                            </div>
 
-                                    <?php
-                                    if(!empty($course_duration)) { ?>
-                                        <div class="d-flex flex-column align-items-center">
-                                            <img src="<?php bloginfo( 'template_url' ) ?>/images/time.svg" alt="5hrs 30mins Icon" />
-                                            <span class="course-des"><?php echo $course_duration?></span>
+                                            <div class="d-flex flex-column align-items-center">
+                                                <img src="<?php bloginfo( 'template_url' ) ?>/images/lesson.svg" alt="24 Lessons Icon" />
+                                                <span class="course-des"><?php echo $total_lesson ?> Lessons</span>
+                                            </div>
+
+                                            <?php
+                                            if(!empty($course_duration)) { ?>
+                                                <div class="d-flex flex-column align-items-center">
+                                                    <img src="<?php bloginfo( 'template_url' ) ?>/images/time.svg" alt="5hrs 30mins Icon" />
+                                                    <span class="course-des"><?php echo $course_duration?></span>
+                                                </div>
+                                            <?php } ?>
                                         </div>
-                                    <?php } ?>
-                                </div>
-                            </div>
-                        </article>
+                                    </div>
+                                </article>
+                            <?php endif;?>
                         <?php endwhile;?>
                         <?php wp_reset_postdata(); ?>
                     <?php else : ?>

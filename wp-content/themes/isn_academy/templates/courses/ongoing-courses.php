@@ -1,15 +1,6 @@
 <?php
+$active_courses = tutor_utils()->get_active_courses_by_user();
 
-    $ongoing = \Inc\Base\SingleCourse::onGoingCourse( get_current_user_id(), $post->post_parent );
-    $ids = array_column( $ongoing, 'ID' );
-    $args = [
-            'post__in' =>  [ implode( ',' , $ids ) ],
-            'post_type' => 'course',
-            'post_parent' => 0,
-            'post_status' => 'publish',
-            'orderby' => 'rand',
-    ];
-    $ongoingCourses = new WP_Query( $args );
 ?>
 <section id="ongoing-courses" class="section-padding">
     <div class="section-header">
@@ -21,22 +12,23 @@
     </div>
 
     <div class="section-body learning-list d-flex flex-wrap justify-content-between">
-        <?php if ( $ongoingCourses->have_posts() ) : ?>
-            <?php while ( $ongoingCourses->have_posts() ) : $ongoingCourses->the_post(); ?>
+        <?php if ( $active_courses && $active_courses->have_posts() ): ?>
+            <?php while ($active_courses->have_posts()): $active_courses->the_post();
+                $avg_rating = tutor_utils()->get_course_rating()->rating_avg;
+                $tutor_course_img = get_tutor_course_thumbnail_src();
+            ?>
                 <article class="learning-list-item d-flex flex-column mb-4">
                     <div class="learning-list-image hover-zoomin">
-                        <?php the_post_thumbnail( 'medium' ) ?>
+                        <img src="<?php echo esc_url($tutor_course_img); ?>" alt="<?php the_title() ?>" />
                     </div>
                     <div class="learning-list-content d-flex flex-column">
-                        <h4><?php the_title() ?></h4>
-                        <a href="<?php the_permalink();?>" class="btn btn-blue">
+                        <h4><?php the_title(); ?></h4>
+                        <a href="<?php the_permalink(); ?>" class="btn btn-blue">
                             CONTINUE COURSE  <i class="fa fa-angle-right" aria-hidden="true"></i>
                         </a>
                     </div>
                 </article>
             <?php endwhile; ?>
         <?php endif; ?>
-
     </div>
-
 </section>
