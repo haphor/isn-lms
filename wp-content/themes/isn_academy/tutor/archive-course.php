@@ -35,14 +35,17 @@ get_header( 'dashboard' ); ?>
                             tutor_course_loop_start();
 
                             while ( have_posts() ) : the_post();
+                                $total_lesson = tutor_utils()->get_lesson_count_by_course( get_the_ID() );
                                 /**
                                  * @hook tutor_course/archive/before_loop_course
                                  * @type action
                                  * Usage Idea, you may keep a loop within a wrap, such as bootstrap col
                                  */
+                                if( $total_lesson ) :
                                 do_action('tutor_course/archive/before_loop_course');
 
                                 tutor_load_template('loop.course');
+
 
                                 /**
                                  * @hook tutor_course/archive/after_loop_course
@@ -50,6 +53,7 @@ get_header( 'dashboard' ); ?>
                                  * Usage Idea, If you start any div before course loop, you can end it here, such as </div>
                                  */
                                 do_action('tutor_course/archive/after_loop_course');
+                                endif;
                             endwhile;
 
                             tutor_course_loop_end();

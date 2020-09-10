@@ -2440,6 +2440,7 @@ ul.sub-courses li:hover span {
 }
 #searchform, 
 #searchform > * {
+<<<<<<< HEAD
 	width: 100%;
 }
 .complete--btn{
@@ -2464,6 +2465,32 @@ ul.sub-courses li:hover span {
 .tutor-wrap .tutor-price-box-thumbnail img {
 	width: 100%;
 }
+=======
+	width: 100%;
+}
+.complete--btn{
+	margin-top:20px;
+}
+.complete--btn button{
+	display: block;
+	width: 100%;
+	background: #0d1733;
+	color: #FFF;
+	border: 1px solid #0d1733;
+	padding: 17px 10px;
+	font-size: 16px;
+}
+.complete--btn button:hover{
+	background:#fff;
+	color:#0d1733;
+}
+.tutor-price-box-thumbnail {
+	margin: -20px 0px 20px;
+}
+.tutor-wrap .tutor-price-box-thumbnail img {
+	width: 100%;
+}
+>>>>>>> 697cc20d76a23c87c55912ae114016a19bc0cd5e
 form.tutor-ResetPassword {
 	background: #fff;
 	padding: 40px 45px 50px;
@@ -2580,6 +2607,4 @@ form.tutor-ResetPassword > p {
 		width: 100% !important;
 	}
 }
-
-
 

@@ -195,9 +195,6 @@ $enable_spotlight_mode = tutor_utils()->get_option('enable_spotlight_mode');
             <div class="tutor-topbar-item tutor-hide-sidebar-bar">
                 <a href="javascript:;" class="tutor-lesson-sidebar-hide-bar"><i class="tutor-icon-angle-left"></i> </a>
 			    <?php $course_id = get_post_meta(get_the_ID(), '_tutor_course_id_for_lesson', true); ?>
-                <a href="<?php echo get_the_permalink($course_id); ?>" class="tutor-topbar-home-btn">
-                    <i class="tutor-icon-home"></i> <?php echo __('Go to Course Home', 'tutor') ; ?>
-                </a>
             </div>
             <div class="tutor-topbar-item tutor-topbar-content-title-wrap">
 			    <?php

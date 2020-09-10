@@ -1619,7 +1619,8 @@ class Utils {
 
 	/**
 	 * @param int $user_id
-	 *
+	 * @param int|null $limit
+     *
 	 * @return bool|\WP_Query
 	 *
 	 * Get the active course by user
@@ -1627,7 +1628,7 @@ class Utils {
 	 * @since v.1.0.0
 	 */
 
-	public function get_active_courses_by_user($user_id = 0){
+	public function get_active_courses_by_user($limit = null, $user_id = 0){
 		$user_id = $this->get_user_id($user_id);
 
 		$course_ids = $this->get_completed_courses_ids_by_user($user_id);
@@ -1640,7 +1641,7 @@ class Utils {
 				'post_type'     => $course_post_type,
 				'post_status'   => 'publish',
 				'post__in'      => $active_courses,
-                'posts_per_page' => -1,
+                'posts_per_page' => $limit ?? -1,
 			);
 
 			return new \WP_Query($course_args);
