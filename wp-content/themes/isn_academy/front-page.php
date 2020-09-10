@@ -16,7 +16,7 @@ get_header();
 
 $args = [
   'post_type' => 'courses',
-  'posts_per_page' => 3,
+  'posts_per_page' => 4,
   'post_parent' => 0,
   'post_status' => 'publish',
   'orderby' => 'rand'
@@ -49,8 +49,28 @@ $query = new WP_Query( $args );
 				<div class="section-header d-md-flex flex-wrap justify-content-between align-items-center">
 					<h3>Quick Learnings</h3>
 					<div class="section-filters d-flex justify-content-between">
-						<span class="d-flex flex-nowrap justify-content-between align-items-center mr-3"> <b class="mr-3">All Learnings</b> <i class="fa fa-chevron-down" aria-hidden="true"></i> </span>
-						<span class="d-flex flex-nowrap justify-content-between align-items-center"> <b class="mr-3">All Specialities</b> <i class="fa fa-chevron-down" aria-hidden="true"></i> </span>
+						<div class="has-dropdown d-flex flex-column mr-3">
+							<span class="d-flex flex-nowrap justify-content-between align-items-center"> 
+								<b class="mr-3">All Learnings</b> 
+								<i class="fa fa-chevron-down" aria-hidden="true"></i> 
+							</span>
+							<ul class="filter-items">
+								<li> <a href="#">Lorem</a> </li>
+								<li> <a href="#">Lorem</a> </li>
+								<li> <a href="#">Lorem</a> </li>
+							</ul>
+						</div>
+						<div class="has-dropdown d-flex flex-column">
+							<span class="d-flex flex-nowrap justify-content-between align-items-center"> 
+								<b class="mr-3">All Specialities</b> 
+								<i class="fa fa-chevron-down" aria-hidden="true"></i> 
+							</span>
+							<ul class="filter-items">
+								<li> <a href="#">Lorem</a> </li>
+								<li> <a href="#">Lorem</a> </li>
+								<li> <a href="#">Lorem</a> </li>
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="section-body learning-list d-flex flex-wrap justify-content-between">

@@ -1113,15 +1113,18 @@ aside#secondary {
 	top: 11px;
 }
 
+.form-style input::placeholder,
 #home-account input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
 	color: #262626;
 	opacity: 1; /* Firefox */
 }
 
+.form-style input::-ms-input-placeholder,
 #home-account input::-ms-input-placeholder { /* Internet Explorer 10-11 */
 	color: #262626;
 }
 
+.form-style input::-ms-input-placeholder,
 #home-account input::-ms-input-placeholder { /* Microsoft Edge */
 	color: #262626;
 }
@@ -1148,18 +1151,20 @@ span.um-active-color {
 
 /* Additional Buttons */
 .btn-white,
+.btn.btn-white,
 .btn-blue:hover,
 .tutor-btn:hover,
 .nxt-course:hover,
 .course-action > a,
 .tutor-button:hover,
+.btn.btn-blue:hover,
 .tutor-previous-link,
 .tutor-next-link:hover,
-.section-filters span:hover,
 .tutor-button.tutor-success:hover,
 #home-account .um-left input:hover,
 .navigation > div.alignleft a:hover,
 #home-account .um .um-button.um-alt,
+.section-filters .has-dropdown:hover span,
 .tutor-login-form-wrap input[type="submit"]:hover {
 	color: #00a1d7 !important;
 	cursor: pointer !important;
@@ -1173,8 +1178,10 @@ span.um-active-color {
 .tutor-btn,
 .nxt-course,
 .tutor-button,
+.btn.btn-blue,
 .btn-white:hover,
 .tutor-next-link,
+.btn.btn-white:hover,
 .course-action > a:hover,
 .tutor-previous-link:hover,
 .tutor-button.tutor-success,
@@ -1212,10 +1219,12 @@ span.um-active-color {
 	margin-bottom: 30px;
 }
 
+.filter-items, 
 .section-filters span {
 	color: #00a1d7;
 	font-size: 16px;
 	font-weight: 300;
+	position: relative;
 	padding: 10px 15px;
 	border-radius: 5px;
 	letter-spacing: -0.02em;
@@ -2535,6 +2544,139 @@ form.tutor-ResetPassword > p {
 }
 .error-404 .btn {
 	padding: 10px 30px;
+}
+
+.form-style .tutor-form-row {
+	display: block;
+}
+.form-style .tutor-form-col-6 {
+	width: 100%;
+	max-width: 100%;
+}
+.form-style .tutor-form-row label,
+.page-id-163 .tutor-form-group label {
+	display: none;
+}
+.form-style .tutor-form-row input,
+.page-id-163 .tutor-form-group input {
+	height: 60px;
+	margin-bottom: 0px;
+	border-radius: 0px;
+	padding-left: 30px !important;
+}
+.form-style .tutor-form-group:before,
+.page-id-163 .tutor-form-group:before {
+	font-family: "Ionicons" !important;
+	font-size: 32px;
+	font-style: normal !important;
+	font-weight: normal !important;
+	font-variant: normal !important;
+	text-transform: none !important;
+	line-height: 1;
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	z-index: 999999;
+	position: absolute;
+	left: 10px;
+	top: 20%;
+}
+.page-id-163 .tutor-form-row:first-of-type .tutor-form-group:before,
+.form-style.regs .tutor-form-row:first-of-type .tutor-form-group:before,
+.page-id-163 .tutor-form-row:nth-of-type(2) > div:first-of-type .tutor-form-group:before,
+.form-style.regs .tutor-form-row:nth-of-type(2) > div:first-of-type .tutor-form-group:before {
+	content: "\f3a0";
+}
+.page-id-163 .tutor-form-row:nth-of-type(2) > div:last-of-type .tutor-form-group:before,
+.form-style.regs .tutor-form-row:nth-of-type(2) > div:last-of-type .tutor-form-group:before {
+	/* content: "\f095"; */
+	content: "\f2eb";
+	font-size: 27px;
+	top: 25%;
+}
+.page-id-163 .tutor-form-row:nth-of-type(3) .tutor-form-group:before,
+.form-style.regs .tutor-form-row:nth-of-type(3) .tutor-form-group:before {
+	content: "\f392";
+}
+.form-style .tutor-form-row:first-of-type > div:first-child > div, 
+.form-style .tutor-form-row:nth-of-type(3) > div:last-child > div,
+.page-id-163 .tutor-form-row:first-of-type > div:first-child > div, 
+.page-id-163 .tutor-form-row:nth-of-type(3) > div:last-child > div {
+	box-shadow: 0px 0px 48px rgba(0, 0, 85, 0.1);
+}
+.form-style .tutor-form-row:first-of-type > div:first-child input,
+.form-style .tutor-form-row:first-of-type > div:first-child > div,
+.page-id-163 .tutor-form-row:first-of-type > div:first-child input,
+.page-id-163 .tutor-form-row:first-of-type > div:first-child > div {
+	border-radius: 10px 10px 0px 0px;
+}
+.page-id-163 .tutor-form-row:nth-of-type(3) > div:last-child input,
+.page-id-163 .tutor-form-row:nth-of-type(3) > div:last-child > div,
+.form-style.regs .tutor-form-row:nth-of-type(3) > div:last-child input,
+.form-style.regs .tutor-form-row:nth-of-type(3) > div:last-child > div {
+	border-radius: 0px 0px 10px 10px;
+}
+.form-style .tutor-reg-form-btn-wrap,
+.page-id-163 .tutor-reg-form-btn-wrap {
+	margin-top: 20px;
+}
+.form-style .tutor-reg-form-btn-wrap button,
+.page-id-163 .tutor-reg-form-btn-wrap button {
+	font-size: 20px;
+	padding: 12px 60px;
+	font-weight: normal !important;
+}
+header.entry-header h1 {
+	text-align: center;
+	padding-top: 40px;
+}
+
+.section-filters .has-dropdown {
+	position: relative;
+}
+
+.filter-items {
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	display: none;
+	list-style: none;
+	text-align: center;
+	border-top: none !important;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-color: #00a1d7 !important;
+	background-color: #00a1d7 !important;
+}
+
+.filter-items li a,
+.section-filters .has-dropdown:hover .filter-items {
+	display: block;
+}
+.filter-items li {
+	border-bottom: 1px solid rgba(255, 255, 255, 0.4) !important;
+}
+.filter-items li:last-child {
+	border-bottom: none !important;
+}
+.filter-items li a {
+	padding: 5px 0px;
+}
+
+.filter-items li:hover a {
+	color: #00a1d7 !important;
+	cursor: pointer !important;
+	box-shadow: none !important;
+	background: #fff !important;
+	text-decoration: none !important;
+}
+
+.section-filters .has-dropdown:hover span {
+	/* border-bottom: none !important; */
+	border-bottom-right-radius: 0px;
+	border-bottom-left-radius: 0px;
 }
 
 /* Responsive Media Query */

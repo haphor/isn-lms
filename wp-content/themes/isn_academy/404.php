@@ -10,7 +10,7 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main site-main d-flex flex-nowrap align-items-center" style="background-image: url('<?= bloginfo('template_url');?>/images/404-cropped.jpg');background-position: 85% center;background-repeat: no-repeat;background-color: #344a5f;background-size: 200px 285px;padding: 40px 50px;min-height: 500px;color: #fff;">
+	<main id="primary" class="site-main site-main d-flex flex-nowrap align-items-center" style="background-image: url('<?= bloginfo('template_url');?>/images/404-cropped.jpg');background-position: 85% center;background-repeat: no-repeat;background-color: #344a5f;background-size: 200px 285px;margin-top: 30px;padding: 40px 50px;min-height: 500px;color: #fff;">
 
 		<section class="error-404 not-found d-flex flex-column align-itmes-center">
 			<header class="page-header">
