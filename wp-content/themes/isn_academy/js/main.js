@@ -10,16 +10,16 @@
  $(document).ready(function(){
   
   // Home tab control
-  jQuery("#home-account .um-right a" ).removeAttr("href");
-  // jQuery("#home-account .login-submit").append('<span class="btn btn-reg-toggle">Create Account</span>');
+  // jQuery("#home-account .um-right a" ).removeAttr("href");
+  // // jQuery("#home-account .login-submit").append('<span class="btn btn-reg-toggle">Create Account</span>');
 
-  $(function(){
-   $( "#hom_reg" ).hide();// hide it initially
-   $( "#home-account .um-right a" ).on('click', function(){
-    $( "#hom_login, #hom_reg" ).fadeToggle( 500 );
-    // $("#hom_login, #hom_reg").toggle();
-   });
-  });
+  // $(function(){
+  //  $( "#hom_reg" ).hide();// hide it initially
+  //  $( "#home-account .um-right a" ).on('click', function(){
+  //   $( "#hom_login, #hom_reg" ).fadeToggle( 500 );
+  //   // $("#hom_login, #hom_reg").toggle();
+  //  });
+  // });
 
   $( "input#user_login" ).attr( "placeholder", "Email Address" );
   $( "input#username-50" ).attr( "placeholder", "Email Address" );
