@@ -1147,7 +1147,9 @@ span.um-active-color {
 }
 
 /* Additional Buttons */
+.btn-white,
 .btn-blue:hover,
+.tutor-btn:hover,
 .nxt-course:hover,
 .course-action > a,
 .tutor-button:hover,
@@ -1157,7 +1159,8 @@ span.um-active-color {
 .tutor-button.tutor-success:hover,
 #home-account .um-left input:hover,
 .navigation > div.alignleft a:hover,
-#home-account .um .um-button.um-alt {
+#home-account .um .um-button.um-alt,
+.tutor-login-form-wrap input[type="submit"]:hover {
 	color: #00a1d7 !important;
 	cursor: pointer !important;
 	box-shadow: none !important;
@@ -1167,15 +1170,18 @@ span.um-active-color {
 }
 
 .btn-blue,
+.tutor-btn,
 .nxt-course,
 .tutor-button,
+.btn-white:hover,
 .tutor-next-link,
 .course-action > a:hover,
 .tutor-previous-link:hover,
 .tutor-button.tutor-success,
 #home-account .um-left input,
 .navigation > div.alignleft a,
-#home-account .um .um-button.um-alt:hover {
+#home-account .um .um-button.um-alt:hover,
+.tutor-login-form-wrap input[type="submit"] {
 	color: #fff !important;
 	cursor: pointer !important;
 	box-shadow: none !important;
@@ -1818,9 +1824,13 @@ footer#colophon a.fa-linkedin:hover {
 }
 
 .c-dropdown-show,
+#dashboard .has-dropdown:hover .c-dropdown,
 #dashboard .c-header-icon.has-dropdown:hover .c-dropdown {
 	opacity: 1 !important;
 	display: flex !important;
+}
+#dashboard .has-dropdown:hover .c-dropdown {
+	cursor: pointer;
 }
 
 .c-header-profile-name {
@@ -2257,21 +2267,22 @@ h3.section-heading {
 #dashboard .single-course-page #last-section h4,
 .tutor-course-header-h1,
 .single-lesson-title{
-	color: #17468B;
+	color: #17468b;
 	font-size: 18px;
-	text-transform: uppercase;
+	line-height: 25px;
 	margin-bottom: 15px;
+	text-transform: uppercase;
 }
 .single-lesson-title i{
 	display: none;
 }
 .tutor-course-summery{
 	margin-bottom: 10px;
-	color: #2B2D42;
+	color: #2b2d42;
 	font-size: 15px;
 }
 #dashboard .single-course-page #last-section p {
-	color: #2B2D42;
+	color: #2b2d42;
 }
 
 ul.sub-courses {
@@ -2287,7 +2298,8 @@ ul.sub-courses li {
 }
 ul.sub-courses li:before {
 	content: '';
-	top: 38%;
+	/* top: 9%; */
+	top: 30%;
 	left: 8px;
 	width: 8px;
 	height: 8px;
@@ -2426,7 +2438,9 @@ ul.sub-courses li:hover span {
 .tutor-table tr td:last-of-type {
 	display: none;
 }
-#searchform, #searchform > * {
+#searchform, 
+#searchform > * {
+<<<<<<< HEAD
 	width: 100%;
 }
 .complete--btn{
@@ -2445,6 +2459,84 @@ ul.sub-courses li:hover span {
 	background:#fff;
 	color:#0d1733;
 }
+.tutor-price-box-thumbnail {
+	margin: -20px 0px 20px;
+}
+.tutor-wrap .tutor-price-box-thumbnail img {
+	width: 100%;
+}
+=======
+	width: 100%;
+}
+.complete--btn{
+	margin-top:20px;
+}
+.complete--btn button{
+	display: block;
+	width: 100%;
+	background: #0d1733;
+	color: #FFF;
+	border: 1px solid #0d1733;
+	padding: 17px 10px;
+	font-size: 16px;
+}
+.complete--btn button:hover{
+	background:#fff;
+	color:#0d1733;
+}
+.tutor-price-box-thumbnail {
+	margin: -20px 0px 20px;
+}
+.tutor-wrap .tutor-price-box-thumbnail img {
+	width: 100%;
+}
+>>>>>>> 697cc20d76a23c87c55912ae114016a19bc0cd5e
+form.tutor-ResetPassword {
+	background: #fff;
+	padding: 40px 45px 50px;
+}
+form.tutor-ResetPassword > *,
+form.tutor-ResetPassword .tutor-form-row > div  {
+	margin: 0px auto;
+}
+form.tutor-ResetPassword > p {
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 50%;
+	flex: 0 0 50%;
+	max-width: 50%;
+	padding-left: 15px;
+	margin-bottom: 25px;
+}
+.page-id-163 main {
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 40px 50px;
+	-webkit-box-shadow: 0 0 15px rgba(0,0,0,0.1);
+	box-shadow: 0 0 15px rgba(0,0,0,0.1);
+	border-radius: 5px;
+}
+.page-id-163 .tutor-form-row {
+	flex-direction: column;
+}
+.page-id-163 .tutor-form-row > div {
+	max-width: 100%;
+	margin: 0px auto;
+	width: 700px;
+}
+.tutor-form-group.tutor-reg-form-btn-wrap {
+	text-align: left !important;
+}
+.tutor-login-wrap {
+	background-color: #fff;
+}
+
+.error-404 {
+	max-width: 500px;
+}
+.error-404 .btn {
+	padding: 10px 30px;
+}
+
 /* Responsive Media Query */
 
 /* lg */
@@ -2515,6 +2607,4 @@ ul.sub-courses li:hover span {
 		width: 100% !important;
 	}
 }
-
-
 

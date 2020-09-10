@@ -44,7 +44,7 @@
             // }
         };
 
-        jQuery('#dashboard .c-header-icon.has-dropdown').click(function () {
+        jQuery('#dashboard .c-header-icon.has-dropdown, #dashboard .c-header-icon').click(function () {
             jQuery(this).find('.c-dropdown').toggleClass("c-dropdown-show");
         });
 

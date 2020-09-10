@@ -10,47 +10,19 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+	<main id="primary" class="site-main site-main d-flex flex-nowrap align-items-center" style="background-image: url('<?= bloginfo('template_url');?>/images/404-cropped.jpg');background-position: 85% center;background-repeat: no-repeat;background-color: #344a5f;background-size: 200px 285px;padding: 40px 50px;min-height: 500px;color: #fff;">
 
-		<section class="error-404 not-found">
+		<section class="error-404 not-found d-flex flex-column align-itmes-center">
 			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'isn_academy' ); ?></h1>
+				<h1 style="color: #fff;line-height: 50px;margin: 0px 0px -10px;" class="page-title"><?php esc_html_e( 'Something’s wrong here……', 'isn_academy' ); ?></h1>
 			</header><!-- .page-header -->
 
 			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'isn_academy' ); ?></p>
-
-					<?php
-					get_search_form();
-
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'isn_academy' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$isn_academy_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'isn_academy' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$isn_academy_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
+				<p><?php esc_html_e( 'we can’t find the page you’re looking for. Use the above Navigation, Check out our Dashboard or head back to Home.', 'isn_academy' ); ?></p>
+				<div style="max-width: 280px;" class="d-flex flex-row flex-nowrap justify-content-between align-items-center">
+					<a href="<?php echo home_url(); ?>/dashboard" class="btn btn-blue">Dashboard</a>
+					<a href="<?php echo home_url(); ?>" class="btn btn-white">Home</a>
+				</div>
 			</div><!-- .page-content -->
 		</section><!-- .error-404 -->
 
