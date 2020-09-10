@@ -13,8 +13,8 @@
                     <span class="c-badge c-badge--header-icon animated shake">87</span>
                     <i class="fa fa-bell"></i>
                 </div> -->
-                <div class="c-header-profile d-flex align-items-center pl-4">
-                    <div class="c-header-profile-avatar mr-4">
+                <div class="c-header-profile has-dropdown d-flex align-items-center pl-4">
+                    <div class="c-header-profile-avatar">
                         <?php if( ! is_user_logged_in() ) { ?>
                             <h1 class="avatar-name">L</h1>
                         <?php } else {
@@ -30,12 +30,27 @@
                     </div>
                     <?php if( is_user_logged_in() ) {
                         $current_user = wp_get_current_user(); ?>
-                        <div class="c-header-profile-name"><?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname;?></div>
-                        <div class="c-header-icon has-dropdown">
-                            <!-- <i class="fa fa-angle-down"></i> -->
-                            <div class="c-dropdown d-flex flex-column align-items-center">
-                                <div class="c-dropdown__header"></div>
-                                <div class="c-dropdown__content d-flex flex-column align-items-center"></div>
+                        <div class="c-header-profile-name ml-4"><?php echo $current_user->user_firstname . ' ' . $current_user->user_lastname;?></div>
+                        <div class="c-header-icon">
+                            <i class="fa fa-angle-down"></i>
+                            <div class="c-dropdown">
+                                <div class="c-dropdown__content d-flex flex-column align-items-center">
+                                    <ul>
+                                        <li> <a href="<?php echo home_url(); ?>/logout">Logout</a> </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } else { ?>
+                        <div class="c-header-icon">
+                            <i class="fa fa-angle-down"></i>
+                            <div class="c-dropdown">
+                                <div class="c-dropdown__content d-flex flex-column align-items-center">
+                                    <ul>
+                                        <li> <a href="<?php echo home_url(); ?>/login">Login</a> </li>
+                                        <li> <a href="<?php echo home_url(); ?>/student-registration">Register</a> </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     <?php }?>
