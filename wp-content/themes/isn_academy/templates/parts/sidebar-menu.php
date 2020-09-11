@@ -16,7 +16,7 @@
                 <div class="c-header-profile has-dropdown d-flex align-items-center pl-4">
                     <div class="c-header-profile-avatar">
                         <?php if( ! is_user_logged_in() ) { ?>
-                            <h1 class="avatar-name">L</h1>
+                            <h1 class="avatar-name"><i class="fa fa-user" aria-hidden="true"></i></h1>
                         <?php } else {
                             $current_user = wp_get_current_user();
                             if($current_user->user_lastname){
