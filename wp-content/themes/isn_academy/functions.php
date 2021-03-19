@@ -212,7 +212,7 @@ add_action( 'widgets_init', 'isn_academy_widgets_init' );
  * Enqueue scripts and styles.
  */
 function isn_academy_scripts() {
-	wp_enqueue_style( 'isn_academy-style', get_stylesheet_uri(), array(), _S_VERSION );
+	wp_enqueue_style( 'isn_academy-style', get_stylesheet_uri(), array(), '1.000008' );
 	wp_style_add_data( 'isn_academy-style', 'rtl', 'replace' );
 
 	wp_enqueue_script( 'isn_academy-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
@@ -249,4 +249,5 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
 
