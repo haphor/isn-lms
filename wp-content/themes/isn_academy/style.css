@@ -1056,25 +1056,34 @@ aside#secondary {
 .um-col-alt {
 	margin: 15px 0 5px 0;
 }
+.um .um-form textarea,
+.um .um-form input[type=tel],
+.um .um-form input[type=text],
+.um .um-form input[type=email],
+.um .um-form input[type=search],
+.um .um-form input[type=number],
+.um .um-form input[type=password],
+#home-account .um .um-form textarea,
+#home-account .um .um-form input[type=tel],
 #home-account .um .um-form input[type=text],
 #home-account .um .um-form input[type=email],
 #home-account .um .um-form input[type=search],
-#home-account .um .um-form input[type=tel],
 #home-account .um .um-form input[type=number],
-#home-account .um .um-form input[type=password],
-#home-account .um .um-form textarea {
+#home-account .um .um-form input[type=password] {
 	color: #262626;
 	border: 1px solid #e2e2e2 !important;
 	background: #ffffff;
-	width: 100%;
+	width: 100% !important;
 	padding: 0 12px 0 44px;
 	font-size: 15px !important;
 }
-
+.um-field-number .um-form input[type=number],
 #home-account .um-col-1 .um-field-area input {
 	height: 60px !important;
 }
-
+.um-field-select .um-field-area.um-field-area-has-icon .select2-selection__rendered {
+    text-indent: 35px !important;
+}
 #home-account .um-col-1, .form-box {
 	box-shadow: 0px 0px 48px rgba(0, 0, 85, 0.1);
 }
@@ -1160,6 +1169,7 @@ span.um-active-color {
 .btn.btn-blue:hover,
 .tutor-previous-link,
 .tutor-next-link:hover,
+.tutor-pagination-wrap a:hover,
 .tutor-button.tutor-success:hover,
 #home-account .um-left input:hover,
 .navigation > div.alignleft a:hover,
@@ -1182,6 +1192,7 @@ span.um-active-color {
 .btn-white:hover,
 .tutor-next-link,
 .btn.btn-white:hover,
+.tutor-pagination-wrap a,
 .course-action > a:hover,
 .tutor-previous-link:hover,
 .tutor-button.tutor-success,
@@ -2449,7 +2460,6 @@ ul.sub-courses li:hover span {
 }
 #searchform, 
 #searchform > * {
-<<<<<<< HEAD
 	width: 100%;
 }
 .complete--btn{
@@ -2474,9 +2484,6 @@ ul.sub-courses li:hover span {
 .tutor-wrap .tutor-price-box-thumbnail img {
 	width: 100%;
 }
-=======
-	width: 100%;
-}
 .complete--btn{
 	margin-top:20px;
 }
@@ -2499,7 +2506,6 @@ ul.sub-courses li:hover span {
 .tutor-wrap .tutor-price-box-thumbnail img {
 	width: 100%;
 }
->>>>>>> 697cc20d76a23c87c55912ae114016a19bc0cd5e
 form.tutor-ResetPassword {
 	background: #fff;
 	padding: 40px 45px 50px;
@@ -2703,6 +2709,7 @@ header.entry-header h1 {
 	font-size: 17px;
 	margin: 0px 0px 10px;
 }
+
 .training_btn {
 	margin-top: 35px;
 	font-size: 20px;
@@ -2710,7 +2717,7 @@ header.entry-header h1 {
 	font-weight: normal !important;
 }
 span.required {
-color: red;
+	color: red;
 }
 
 .tutor-quiz-header .tutor-quiz-meta li {
@@ -2732,7 +2739,6 @@ color: red;
 .tutor-quiz-header h5 {
 	color: #9f9fa0;
 }
-
 /* Responsive Media Query */
 
 /* lg */
@@ -2793,7 +2799,6 @@ color: red;
 		width: 49% !important;
 	}
 }
-
 
 @media all and (max-width: 540px) {
 	.learning-list-item {
