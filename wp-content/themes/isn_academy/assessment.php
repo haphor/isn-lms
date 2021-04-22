@@ -13,6 +13,16 @@
  *
  */
 get_header( 'dashboard' );
+
+$args = [
+    'post_type' => 'courses',
+    'posts_per_page' => 3,
+    'post_parent' => 0,
+    'post_status' => 'publish',
+    'orderby' => 'rand'
+];
+$query = new WP_Query( $args );
+
 ?>
  <section id="dashboard-content">
     <?php get_template_part( 'templates/parts/sidebar', 'menu' ); ?>
@@ -29,51 +39,35 @@ get_header( 'dashboard' );
       </p>
      </div>
 
-     <div class="section-body learning-list assessment-list d-flex flex-wrap justify-content-between">     
-      <article class="assessment-list-item unlocked-assessment d-flex flex-column mb-4">
-       <div class="assessment-list-content d-flex flex-column">
-        <div class="d-flex flex-row align-items-center justify-content-between">
-         <h5>General Business Practices: Factory Safety Rules</h5>
-         <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-        </div>
-        <a href="#" class="btn btn-blue">TAKE QUIZ  <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-       </div>
-      </article>
-      
-      <article class="assessment-list-item unlocked-assessment d-flex flex-column mb-4">
-       <div class="assessment-list-content d-flex flex-column">
-        <div class="d-flex flex-row align-items-center justify-content-between">
-         <h5>General Business Practices: Factory Safety Rules</h5>
-         <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-        </div>
-        <a href="#" class="btn btn-blue">TAKE QUIZ  <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-       </div>
-      </article>
-      
-      <article class="assessment-list-item locked-assessment d-flex flex-column mb-4">
-       <div class="assessment-list-content d-flex flex-column">
-        <div class="d-flex flex-row align-items-center justify-content-between">
-         <h5>General Business Practices: Factory Safety Rules</h5>
-         <i class="fa fa-lock" aria-hidden="true"></i>
-        </div>
-        <a href="#" class="btn btn-blue disabled">UNLOCK QUIZ</a>
-       </div>
-      </article>
-      
-      <article class="assessment-list-item locked-assessment d-flex flex-column mb-4">
-       <div class="assessment-list-content d-flex flex-column">
-        <div class="d-flex flex-row align-items-center justify-content-between">
-         <h5>General Business Practices: Factory Safety Rules</h5>
-         <i class="fa fa-lock" aria-hidden="true"></i>
-        </div>
-        <a href="#" class="btn btn-blue disabled">UNLOCK QUIZ</a>
-       </div>
-      </article>
+     <div class="section-body learning-list assessment-list d-flex flex-wrap justify-content-between">
+         <?php if ( $query->have_posts() ) :
+         while ( $query->have_posts() ) : $query->the_post();
+            $course_duration = get_tutor_course_duration_context();
+            $total_lesson = tutor_utils()->get_lesson_count_by_course( get_the_ID() );
+         ?>
+            <?php if( !$total_lesson ) : ?>
+             <article class="assessment-list-item unlocked-assessment d-flex flex-column mb-4">
+                 <div class="assessment-list-content d-flex flex-column">
+                     <div class="d-flex flex-row align-items-center justify-content-between">
+                         <h5><?php the_title() ?></h5>
+                         <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                     </div>
+                     <a href="<?php the_permalink(); ?>" class="btn btn-blue">
+                         TAKE QUIZ  <i class="fa fa-angle-right" aria-hidden="true"></i>
+                     </a>
+                 </div>
+             </article>
+            <?php endif ; endwhile; ?>
+         <?php else :  ?>
+         <article class="assessment-list-item unlocked-assessment d-flex flex-column mb-4">
+             No Assessment at the moment
+         </article>
+         <?php endif; ?>
      </div>
     </sectin>
 
     <!-- Assessment Section -->
-    <section id="certif" class="section-padding mt-5">
+    <section id="certif" class="section-padding mt-5 d-none">
 
      <div class="section-header">
       <h3 class="section-heading">COMPLETED ASSESSMENTS</h3>
