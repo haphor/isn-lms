@@ -2739,6 +2739,11 @@ span.required {
 .tutor-quiz-header h5 {
 	color: #9f9fa0 !important;
 }
+.tutor-quiz-questions-pagination ul li a {
+	font-size: 15px !important;
+	padding: 3px 9px !important;
+	margin-bottom: 15px !important;
+}
 /* Responsive Media Query */
 
 /* lg */
