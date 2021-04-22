@@ -2713,11 +2713,11 @@ span.required {
 color: red;
 }
 
-.tutor-quiz-header .tutor-quiz-meta li:last-child {
-	margin-right: 5px;
-}
 .tutor-quiz-header .tutor-quiz-meta li {
 	margin-right: 30px;
+}
+.tutor-quiz-header .tutor-quiz-meta li:last-child {
+	margin-right: 5px;
 }
 
 /* Responsive Media Query */
