@@ -2715,9 +2715,22 @@ color: red;
 
 .tutor-quiz-header .tutor-quiz-meta li {
 	margin-right: 30px;
+	text-align: center;
+	font-size: 17px;
 }
 .tutor-quiz-header .tutor-quiz-meta li:last-child {
 	margin-right: 5px;
+}
+.quiz-answer-input-field {
+	font-size: 17px;
+}
+.time-remaining,
+.tutor-quiz-header .tutor-quiz-meta li strong {
+	font-size: 17px;
+	color: #9f9fa0;
+}
+.tutor-quiz-header h5 {
+	color: #9f9fa0;
 }
 
 /* Responsive Media Query */
