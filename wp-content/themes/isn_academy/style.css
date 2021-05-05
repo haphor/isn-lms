@@ -1046,7 +1046,7 @@ aside#secondary {
 }
 
 .um-field-area .um-field-radio-option,
-.um-field-area .um-field-checkbox-option, 
+.um-field-area .um-field-checkbox-option,
 #home-account .um .um-field-icon i,
 #home-account .select2-search:before,
 #home-account .select2-search-choice-close:before,
@@ -1082,7 +1082,7 @@ aside#secondary {
 	height: 60px !important;
 }
 .um-field-select .um-field-area.um-field-area-has-icon .select2-selection__rendered {
-    text-indent: 35px !important;
+	text-indent: 35px !important;
 }
 #home-account .um-col-1, .form-box {
 	box-shadow: 0px 0px 48px rgba(0, 0, 85, 0.1);
@@ -1230,7 +1230,7 @@ span.um-active-color {
 	margin-bottom: 30px;
 }
 
-.filter-items, 
+.filter-items,
 .section-filters span {
 	color: #00a1d7;
 	font-size: 16px;
@@ -1424,7 +1424,7 @@ footer#colophon a.fa-linkedin:hover {
 .home-newsletter .single .btn {
 	color: #fff;
 	font-size: 27px;
-	height: 40px; 
+	height: 40px;
 	margin: 0px;
 	border-radius: 0 5px 5px 0;
 	padding: 0px 12px !important;
@@ -1524,7 +1524,7 @@ footer#colophon a.fa-linkedin:hover {
 #hom_login .um-logout {
 	margin-left: 0px !important;
 }
-.um-logout .um-misc-ul, 
+.um-logout .um-misc-ul,
 .um-logout .um-misc-ul li {
 	margin: 0px;
 	padding: 0px;
@@ -1532,13 +1532,13 @@ footer#colophon a.fa-linkedin:hover {
 }
 
 .nav-button {
-	position:relative; 
-	width:50px; 
-	height:42px; 
-	padding:12px; 
-	display:block; 
-	border:solid 1px #f8f8f8;  
-	z-index:1111; 
+	position:relative;
+	width:50px;
+	height:42px;
+	padding:12px;
+	display:block;
+	border:solid 1px #f8f8f8;
+	z-index:1111;
 }
 .nav-button #nav-icon3 {
 	position:relative;
@@ -1997,7 +1997,7 @@ footer#colophon a.fa-linkedin:hover {
 	-o-transition: all 0.5s ease-in-out;
 	transition: all 0.5s ease-in-out;
 }
-.c-menu__item a, 
+.c-menu__item a,
 .c-menu__item a:visited {
 	color: #fff;
 	text-decoration: none;
@@ -2363,8 +2363,8 @@ ul.sub-courses li.active{
 ul.sub-courses li.active span{
 	color:#fff;
 }
-ul.sub-courses li:hover a, 
-ul.sub-courses li:hover b, 
+ul.sub-courses li:hover a,
+ul.sub-courses li:hover b,
 ul.sub-courses li:hover span {
 	color: #fff;
 }
@@ -2458,7 +2458,7 @@ ul.sub-courses li:hover span {
 .tutor-table tr td:last-of-type {
 	display: none;
 }
-#searchform, 
+#searchform,
 #searchform > * {
 	width: 100%;
 }
@@ -2604,9 +2604,9 @@ form.tutor-ResetPassword > p {
 .form-style.regs .tutor-form-row:nth-of-type(3) .tutor-form-group:before {
 	content: "\f392";
 }
-.form-style .tutor-form-row:first-of-type > div:first-child > div, 
+.form-style .tutor-form-row:first-of-type > div:first-child > div,
 .form-style .tutor-form-row:nth-of-type(3) > div:last-child > div,
-.page-id-163 .tutor-form-row:first-of-type > div:first-child > div, 
+.page-id-163 .tutor-form-row:first-of-type > div:first-child > div,
 .page-id-163 .tutor-form-row:nth-of-type(3) > div:last-child > div {
 	box-shadow: 0px 0px 48px rgba(0, 0, 85, 0.1);
 }
@@ -2693,8 +2693,8 @@ header.entry-header h1 {
 .traning-form select,
 .traning-form input[type="tel"],
 .traning-form input[type="date"],
-.traning-form input[type="text"], 
-.traning-form input[type="email"], 
+.traning-form input[type="text"],
+.traning-form input[type="email"],
 .traning-form input[type="number"] {
 	width: 100%;
 	height: 40px;
@@ -2743,6 +2743,33 @@ span.required {
 	font-size: 15px !important;
 	padding: 3px 9px !important;
 	margin-bottom: 15px !important;
+	background-color: #00a1d7 !important;
+}
+.quiz-answer-input-body {
+ display: inline-block;
+}
+.tutor-quiz-answers-wrap label:before {
+ content: "A.";
+ display: inline-block;
+ padding-right: 5px;
+}
+.tutor-quiz-answers-wrap label:nth-child(2):before {
+ content: "B.";
+}
+.tutor-quiz-answers-wrap label:nth-child(3):before {
+ content: "C.";
+}
+.tutor-quiz-answers-wrap label:nth-child(4):before {
+ content: "D.";
+}
+.tutor-quiz-answers-wrap label:nth-child(5):before {
+ content: "E.";
+}
+.tutor-quiz-answers-wrap label:nth-child(6):before {
+ content: "F.";
+}
+.tutor-quiz-answers-wrap label:nth-child(7):before {
+ content: "G.";
 }
 /* Responsive Media Query */
 
