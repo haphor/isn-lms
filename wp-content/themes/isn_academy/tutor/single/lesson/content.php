@@ -46,7 +46,18 @@ if ($best_watch_time > 0){
 
     <input type="hidden" id="tutor_video_tracking_information" value="<?php echo esc_attr(json_encode($jsonData)); ?>">
 	<?php tutor_lesson_video(); ?>
-	<?php get_tutor_posts_attachments(); ?>
+    <?php get_tutor_posts_attachments(); ?>
+    <?php $attachments = tutor_utils()->get_attachments();
+    if (is_array($attachments) && count($attachments)){ ?>
+        <div class="tutor-page-segment tutor-attachments-wrap">
+            <?php foreach ($attachments as $attachment){ ?>
+                <h3><?php echo $attachment->name; ?></h3>
+                <!-- <object data="<?php //echo $attachment->url; ?>" height="400" type="application/pdf" width="100%"></object> -->
+                <iframe src="https://docs.google.com/gview?url=<?php echo $attachment->url; ?>&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
+                <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={<?php //echo $attachment->url; ?>}' width='600px' height='500px' frameborder='0'></iframe> -->
+            <?php } ?>
+        </div>
+    <?php } ?>
 </div>
 
 <?php do_action('tutor_lesson/single/after/content'); ?>

@@ -30,6 +30,7 @@ if (is_array($materials) && count($materials)){
 				<?php
 				foreach ($materials as $material){
 					echo "<li>{$material}</li>";
+					// echo "<object data=\"{$material}\" height=\"400\" type=\"application/pdf\" width=\"100%\"></object>";
 				}
 				?>
 			</ul>
