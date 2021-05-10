@@ -51,7 +51,7 @@ if ($best_watch_time > 0){
     if (is_array($attachments) && count($attachments)){ ?>
         <div class="tutor-page-segment tutor-attachments-wrap">
             <?php foreach ($attachments as $attachment){ ?>
-                <h3><?php echo $attachment->name; ?></h3>
+                <!-- <h3><?php //echo $attachment->name; ?></h3> -->
                 <!-- <object data="<?php //echo $attachment->url; ?>" height="400" type="application/pdf" width="100%"></object> -->
                 <iframe src="https://docs.google.com/gview?url=<?php echo $attachment->url; ?>&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
                 <!-- <iframe src='https://view.officeapps.live.com/op/embed.aspx?src={<?php //echo $attachment->url; ?>}' width='600px' height='500px' frameborder='0'></iframe> -->
