@@ -2315,6 +2315,7 @@ ul.sub-courses li {
 	border-radius: 5px;
 	position: relative;
 	margin-bottom: 7px;
+	list-style: none;
 }
 ul.sub-courses li:before {
 	content: '';
@@ -2773,6 +2774,14 @@ span.required {
 }
 /* Responsive Media Query */
 
+@media (max-width:1200px) {
+	#dashboard main.l-main {
+		padding: 70px 0 0 20px;
+	}
+	.move-left {
+		padding-left: 170px !important;
+	}
+}
 /* lg */
 @media (max-width:1920px) {}
 
@@ -2811,6 +2820,9 @@ span.required {
 	#menu-footer-extras li {
 		position: relative;
 		padding: 0px 15px;
+	}
+	#dashboard main.l-main {
+		padding-left: 40px;
 	}
 }
 
