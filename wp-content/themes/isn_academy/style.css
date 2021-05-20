@@ -2891,5 +2891,8 @@ span.required {
 	.assessment-list article {
 		width: 100% !important;
 	}
+	.quiz-answer-input-body {
+		width: 80%;
+	}
 }
 
