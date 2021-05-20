@@ -150,10 +150,12 @@ $attempt_remaining = $attempts_allowed - $attempted_count;
                                                     <div class="quiz-answer-input-bottom">
                                                         <div class="quiz-answer-input-field">
                                                             <input name="attempt[<?php echo $is_started_quiz->attempt_id; ?>][quiz_question][<?php echo $question->question_id; ?>]" type="radio" value="<?php echo $answer->answer_id; ?>" data-is-correct="<?php echo $answer->is_correct ?>" >
-                                                            <span>&nbsp;</span>
+                                                            <span style="display: inline-block; font-size: 4em;">&nbsp;</span>
+																																																												<span style="display: inline-block; width: 95%;">
                                                             <?php
                                                                 if ($answer->answer_view_format !== 'image'){ echo $answer_title;}
                                                             ?>
+																																																												</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -174,10 +176,12 @@ $attempt_remaining = $attempts_allowed - $attempted_count;
                                                     <div class="quiz-answer-input-bottom">
                                                         <div class="quiz-answer-input-field">
                                                             <input name="attempt[<?php echo $is_started_quiz->attempt_id; ?>][quiz_question][<?php echo $question->question_id; ?>][]" type="checkbox" data-is-correct="<?php echo $answer->is_correct ?>" value="<?php echo $answer->answer_id; ?>">
-                                                            <span>&nbsp;</span>
+                                                            <span style="display: inline-block; font-size: 4em;">&nbsp;</span>
+																																																												<span style="display: inline-block; width: 95%;">
                                                             <?php if ($answer->answer_view_format !== 'image'){
                                                                 echo $answer_title;
                                                             } ?>
+																																																												</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -453,3 +457,25 @@ $attempt_remaining = $attempts_allowed - $attempted_count;
     do_action('tutor_quiz/body/after', $quiz_id);
 	?>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+							<p>Are you sure you want to submit?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn tutor-button btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" id="Agree" class="btn tutor-button tutor-success tutor-quiz-answer-next-btn" data-dismiss="modal">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+	jQuery('button[name="quiz_answer_submit_btn"]').hide();
+	jQuery('.quiz-attempt-single-question:last-of-type .quiz-footer-button').append('<button type="button" id="submit-alert" class="tutor-button tutor-success tutor-quiz-answer-next-btn" data-toggle="modal" data-target="#exampleModalCenter">Done</button>');
+	jQuery('#Agree').click(function(){
+		jQuery('#submit-alert').hide();
+		jQuery('button[name="quiz_answer_submit_btn"]').show();
+	});
+</script>
