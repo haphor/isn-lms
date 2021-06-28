@@ -85,4 +85,7 @@ $passing_grade = tutor_utils()->get_quiz_option($quiz_id, 'passing_grade', 0);
         </tbody>
 
     </table>
+    <div class="tutor-next-previous-pagination-wrap mt-50">
+		<a class="tutor-next-link" href="<?php echo get_the_permalink($attempt->course_id); ?>">Download Certifcate</a>
+	</div>
 </div>
