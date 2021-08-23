@@ -28,6 +28,8 @@ do_action('tutor_course/single/enrolled/before/wrap');
                                 <?php tutor_course_requirements_html(); ?>
                                 <?php tutor_course_tags_html(); ?>
                                 <?php tutor_course_target_audience_html(); ?>
+                                <?php tutor_course_target_reviews_html(); ?>
+                                <?php tutor_course_target_review_form_html(); ?>
                                 <?php do_action('tutor_course/single/enrolled/after/sidebar'); ?>
 
                             </div>
@@ -40,8 +42,6 @@ do_action('tutor_course/single/enrolled/before/wrap');
                                     <?php //tutor_course_content(); ?>
                                     <?php //tutor_course_benefits_html(); ?>
                                     <?php //tutor_course_instructors_html(); ?>
-                                    <?php //tutor_course_target_reviews_html(); ?>
-                                    <?php //tutor_course_target_review_form_html(); ?>
                                     <?php do_action('tutor_course/single/enrolled/after/inner-wrap'); ?>
                                 </div>
                             </div>

@@ -1303,6 +1303,7 @@ span.um-active-color {
 .btn.btn-blue:hover,
 .tutor-previous-link,
 .tutor-next-link:hover,
+.write-course-review-link-btn,
 .tutor-pagination-wrap a:hover,
 .tutor-button.tutor-success:hover,
 #home-account .um-left input:hover,
@@ -1332,6 +1333,7 @@ span.um-active-color {
 .tutor-button.tutor-success,
 #home-account .um-left input,
 .navigation>div.alignleft a,
+.write-course-review-link-btn:hover,
 #home-account .um .um-button.um-alt:hover,
 .tutor-login-form-wrap input[type="submit"] {
     color: #fff !important;
@@ -1340,6 +1342,14 @@ span.um-active-color {
     background: #00a1d7 !important;
     text-decoration: none !important;
     border: 2px solid #00a1d7 !important;
+}
+
+.write-course-review-link-btn {
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    -webkit-transition: 300ms;
+    transition: 300ms;
 }
 
 #home-account .um-half {
@@ -2496,6 +2506,39 @@ h3.section-heading {
 
 .cert-download i {
     margin-right: 10px;
+}
+
+.tutor-single-course-segment,
+.tutor-course-enrolled-review-wrap {
+    padding: 20px;
+}
+
+#dashboard .course-student-rating-title .tutor-segment-title {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.27;
+    color: #4b5981;
+    margin-bottom: 31px;
+}
+
+.tutor-course-reviews-wrap {
+    border: 1px solid #dcdcdc;
+}
+
+.tutor-review-individual-item {
+    border-top: 1px solid #dcdcdc;
+}
+
+#dashboard .course-avg-rating-wrap .course-avg-rating {
+    font-size: 76px;
+}
+#dashboard .tutor-course-avg-rating-total,
+#dashboard .tutor-review-individual-item .tutor-review-user-info p.review-meta {
+    font-size: 18px;
+}
+#dashboard .tutor-review-individual-item .review-content p,
+#dashboard .tutor-review-individual-item .tutor-review-user-info p {
+    font-size: 20px;
 }
 
 
